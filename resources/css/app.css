@@ -14,9 +14,11 @@ body {
     width: 150px;
 }
 
-.navbar-nav .d-flex {
-    width: 100%;
+.navbar-navd .d-flex{
+    margin-right: 10px;
+    gap: 100px;
 }
+
 
 .shortcut-menu i {
     border: 1px solid rgb(176, 176, 176);

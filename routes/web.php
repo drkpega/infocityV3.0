@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\auth\LoginRegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,3 +28,17 @@ Route::controller(LoginRegisterController::class)->group(function () {
     Route::get('/dashboard', 'dashboard')->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
 });
+Route::get('detailpostingan', function () {
+    return view('admin.detailpostingan');
+});
+
+Route::get('tambahkegiatan', function () {
+    return view('admin.tambah_kegiatan');
+});
+
+Route::get('homepageadmin', function () {
+    return view('admin.homepage_admin');
+});
+
+
+Route::resource('/posts', \App\Http\Controllers\HomeController::class);

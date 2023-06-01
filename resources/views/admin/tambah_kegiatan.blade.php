@@ -10,7 +10,8 @@
         <center><img src="./image/poster.png" alt="/poster"></center>
         <br>
 
-        <form action="{{route ('HomeController.store')}}" method="POST" enctype="multipart/form-data">
+        {{-- <form action="{{route ('HomeController.store')}}" method="POST" enctype="multipart/form-data"> --}}
+            <form method="POST" enctype="multipart/form-data">
         @csrf
             <div class="row">
                 <label for="inputNamaKegiatan" class="col-sm-3 col-form-label">Nama Kegiatan</label>

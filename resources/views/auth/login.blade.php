@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 
-@section('title-page', 'Login')
-
 @section('content')
 
 
@@ -35,11 +33,11 @@
                     <div class="mb-3 row">
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Login">
                     </div>
-                    
+
                 </form>
             </div>
         </div>
-    </div>    
+    </div>
 </div>
 
 
