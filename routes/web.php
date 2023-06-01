@@ -17,4 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('detailpostingan', function () {
+    return view('admin.detailpostingan');
+});
+
+Route::get('tambahkegiatan', function () {
+    return view('admin.tambah_kegiatan');
+});
+
+Route::get('homepageadmin', function () {
+    return view('admin.homepage_admin');
+});
+
 Route::resource('/posts', \App\Http\Controllers\HomeController::class);

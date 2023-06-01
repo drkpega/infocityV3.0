@@ -39,7 +39,7 @@
 <div id="app">
     <!--navbar-->
     @include('layouts.navbar')
-    
+
     @yield('content')
 
 </div>
