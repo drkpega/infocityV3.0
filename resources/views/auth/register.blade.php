@@ -14,9 +14,9 @@
                     <div class="mb-3 row">
                         <label for="name" class="col-md-4 col-form-label text-md-end text-start">Name</label>
                         <div class="col-md-6">
-                          <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}">
-                            @if ($errors->has('name'))
-                                <span class="text-danger">{{ $errors->first('name') }}</span>
+                          <input type="text" class="form-control @error('nama_user') is-invalid @enderror" id="nama_user" name="nama_user" value="{{ old('nama_user') }}">
+                            @if ($errors->has('nama_user'))
+                                <span class="text-danger">{{ $errors->first('nama_user') }}</span>
                             @endif
                         </div>
                     </div>
@@ -26,6 +26,15 @@
                           <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
                             @if ($errors->has('email'))
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="username" class="col-md-4 col-form-label text-md-end text-start">User Name</label>
+                        <div class="col-md-6">
+                          <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" value="{{ old('username') }}">
+                            @if ($errors->has('username'))
+                                <span class="text-danger">{{ $errors->first('username') }}</span>
                             @endif
                         </div>
                     </div>

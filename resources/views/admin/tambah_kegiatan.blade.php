@@ -1,17 +1,16 @@
 @extends('layouts.app')
 
-@section('title-page', 'Form Informasi Kegiatan')
+@section('title', 'Form Informasi Kegiatan')
 
 @section('content')
 
-    <h3>Lomba</h3>
+    <h3>Form Informasi Kegiatan</h3>
 
     <div class="detail-kegiatan-edit">
         <center><img src="./image/poster.png" alt="/poster"></center>
         <br>
-
-        {{-- <form action="{{route ('HomeController.store')}}" method="POST" enctype="multipart/form-data"> --}}
-            <form method="POST" enctype="multipart/form-data">
+        <form action="{{route ('store')}}" method="POST" enctype="multipart/form-data">
+            {{-- <form method="POST" enctype="multipart/form-data"> --}}
         @csrf
             <div class="row">
                 <label for="inputNamaKegiatan" class="col-sm-3 col-form-label">Nama Kegiatan</label>
@@ -68,18 +67,18 @@
                 <label for="Caption" class="col-sm-3 col-form-label">Caption</label>
                 <div class="col-sm-6">
                     <h4>:</h4>
-                    <input type="text" class="form-control" placeholder="Masukkan Caption" id="Caption" style="height: 100px" name="benefit"></input>
+                    <input type="text" class="form-control" placeholder="Masukkan Caption" id="Caption" style="height: 100px" name="benefit">
                 </div>
             </div>
             <div class="row">
                 <label for="poster" class="col-sm-3 col-form-label">Poster Kegiatan</label>
                 <div class="col-sm-6">
                     <h4>:</h4>
-                    <input type="file" class="form-control" placeholder="Masukkan Caption" id="Caption" style="height: 100px" name="benefit"></input>
+                    <input type="file" class="form-control" placeholder="Masukkan Gambar" id="poster" style="height: 100px" name="poster_postingan">
                 </div>
             </div>
 
-                <button class="btn btn-success" type="submit">Upload</button>
+                <center><button class="btn btn-success" type="submit">Upload</button></center>
         </form>
     </div>
 

@@ -62,7 +62,7 @@ class HomeController extends Controller
         //create post
         Kegiatan::create([
             'nama_kegiatan' => $request->nama_kegiatan,
-            'poster_kegiatan' => $image->hashName(),
+            'poster_postingan' => $image->hashName(),
             'tanggal' => $request->tanggal,
             'lokasi' => $request->lokasi,
             'caption' => $request->caption,
@@ -137,7 +137,7 @@ class HomeController extends Controller
             //update post with new image
             $kegiatan->update([
                 'nama_kegiatan' => $request->nama_kegiatan,
-                'poster_kegiatan' => $image->hashName(),
+                'poster_postingan' => $image->hashName(),
                 'tanggal' => $request->tanggal,
                 'lokasi' => $request->lokasi,
                 'caption' => $request->caption,

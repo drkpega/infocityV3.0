@@ -5,7 +5,11 @@ body {
     font-family: "Ibarra Real Nova";
 }
 
-/* header & navbar */
+/*navbar */
+.navbar{
+    margin-bottom: 30px;
+}
+
 .navbar-brand {
     margin: auto;
 }
@@ -14,12 +18,147 @@ body {
     width: 150px;
 }
 
-.navbar-navd .d-flex{
+.navbar-nav .d-flex{
     margin-right: 10px;
     gap: 100px;
 }
 
+/*tambah_kegiatan*/
 
+h3 {
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.detail-kegiatan-edit {
+    display: block;
+    justify-content: center;
+    background-color: white;
+    margin: 1cm;
+    padding: 1cm;
+}
+
+.detail-kegiatan-edit img {
+    width: min-content;
+}
+
+.detail-kegiatan-edit form {
+    border-top: 2px solid black;
+}
+
+.detail-kegiatan-edit .row {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.detail-kegiatan-edit .col-sm-6 {
+    display: flex;
+    font-size: 150%;
+}
+
+form .col-sm-6 h4 {
+    margin-right: 10px;
+}
+
+.detail-kegiatan-edit .btn {
+    margin-top: 10px;
+    width: fit-content;
+
+}
+
+/*homepage_admin*/
+.etalase-postingan{
+    display: grid;
+    grid-template-columns: repeat(
+        4,
+        5fr
+    ); /* Membagi ruang menjadi 4 kolom dengan lebar yang sama*/
+    grid-gap: 20px;
+    width: 100%;
+    padding: 30px;
+}
+
+.etalase-postingan .kartu{
+    background-color: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+.etalase-postingan .btn{
+    margin-top: 10px;
+    width: fit-content;
+}
+
+/*detailpostingan*/
+.detail-kegiatan {
+    display: block;
+    justify-content: center;
+    background-color: white;
+    margin: 1cm;
+    padding: 1cm;
+}
+
+.detail-kegiatan img {
+    width: 500px;
+}
+
+.detail-kegiatan .icon {
+    display: flex;
+    justify-content: right;
+}
+
+.detail-kegiatan .tempat-tanggal {
+    display: flex;
+    justify-content: space-between;
+}
+
+.detail-kegiatan .benefit {
+    margin-left: 10px;
+}
+
+.detail-kegiatan i {
+    font-size: 20px;
+    margin-right: 10px;
+}
+.tanggal {
+    display: flex;
+    padding: 10px;
+}
+
+.pelaksana {
+    display: flex;
+}
+
+.detail-kegiatan .pelaksana img {
+    width: auto;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid rgb(176, 176, 176);
+    margin: 0px 15px 0px 10px;
+}
+.pelaksana .pelaksana-detail {
+    margin-right: 10px;
+}
+.to-edit, .to-delete {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%; /* Mengisi lebar 100% dari paren*/
+    padding-right: 2cm;
+}
+.edit-lomba-1 {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%; /* Mengisi lebar 100% dari parent*/
+    gap: 10px;
+    padding-left: 2cm;
+}
+
+/*
 .shortcut-menu i {
     border: 1px solid rgb(176, 176, 176);
     border-radius: 180px;
@@ -42,13 +181,13 @@ body {
     width: 60%;
 }
 
-/* main  */
+/* main
 
 main {
     font-family: "Ibarra Real Nova";
     display: flex;
-    justify-content: center; /* Mengatur konten horizontal di tengah */
-    align-items: center; /* Mengatur konten vertikal di tengah */
+    justify-content: center; /* Mengatur konten horizontal di tengah
+    align-items: center; /* Mengatur konten vertikal di tengah
     flex-direction: column;
 }
 main h3 {
@@ -111,14 +250,14 @@ main h3 {
 /main,page : pilihpostingan/ .to-edit, .to-delete {
     display: flex;
     justify-content: flex-end;
-    width: 100%; /* Mengisi lebar 100% dari parent */
+    width: 100%; /* Mengisi lebar 100% dari paren
     padding-right: 2cm;
 }
 
 /main,page : lomba-1/ .edit-lomba-1 {
     display: flex;
     justify-content: flex-start;
-    width: 100%; /* Mengisi lebar 100% dari parent */
+    width: 100%; /* Mengisi lebar 100% dari parent
     gap: 10px;
     padding-left: 2cm;
 }
@@ -142,7 +281,7 @@ main h3 {
     grid-template-columns: repeat(
         4,
         5fr
-    ); /* Membagi ruang menjadi 4 kolom dengan lebar yang sama */
+    ); /* Membagi ruang menjadi 4 kolom dengan lebar yang sama
     grid-gap: 20px;
     width: 100%;
 }
@@ -192,7 +331,7 @@ page :disimpan1/ .etalase-postingan {
     grid-template-columns: repeat(
         4,
         5fr
-    ); /* Membagi ruang menjadi 4 kolom dengan lebar yang sama */
+    ); /* Membagi ruang menjadi 4 kolom dengan lebar yang sama
     grid-gap: 20px;
     width: 100%;
     padding: 30px;
@@ -270,4 +409,4 @@ page :disimpan1/ .etalase-postingan {
 }
 .box form {
     width: 80%;
-}
+} */
