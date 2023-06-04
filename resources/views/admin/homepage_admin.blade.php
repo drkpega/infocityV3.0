@@ -10,7 +10,7 @@
             <button type="button" class="btn btn-secondary" :class="{ 'hidden': !open }">Back</button>
             <button type="button" class="btn btn-success" :class="{ 'hidden': open }">+ Tambah Informasi Kegiatan</button>
             <button @click="open:true" type="button" class="btn btn-danger" :class="{ 'hidden': open }">
-                <i class="fa-solid fa-trash-can"></i>
+                <i class="fas fa-trash-alt" style="color: #ffffff;"></i>
             </button>
 
         </div>

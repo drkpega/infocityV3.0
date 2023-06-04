@@ -46,5 +46,24 @@ Route::get('app', function () {
     return view('layouts.app');
 });
 
+Route::get('homepageuser', function () {
+    return view('user.homepage_user');
+});
+
+Route::get('detailpostinganuser', function () {
+    return view('user.detail_postingan');
+});
+
+Route::get('profileuser', function () {
+    return view('user.profile_user');
+});
+
+Route::get('favorite', function () {
+    return view('user.favorite');
+});
+
+Route::get('kategorikegiatan', function () {
+    return view('user.kategori_kegiatan');
+});
 
 Route::resource('/posts', \App\Http\Controllers\HomeController::class);
