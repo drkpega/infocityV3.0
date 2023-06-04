@@ -1,0 +1,279 @@
+body{
+    background: linear-gradient(#FFFFFF, #697dff, #2250e7);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Ibarra Real Nova';
+}
+
+
+/* header & navbar */
+header{
+    background-color: #FFFFFF;
+    border-bottom: 1px solid rgb(68, 64, 64);
+    margin-bottom: 20px;
+    padding: 0px 40px 0px 20px;
+    font-family: 'Ibarra Real Nova';
+
+}
+header .navbar-brand{
+    margin-left: 25px;
+}
+
+header .navbar-brand img{
+    width: 150px;
+}
+
+header .shortcut-menu i{
+    border: 1px solid rgb(176, 176, 176);
+    border-radius: 180px;
+    padding: 10px;
+    background-color:#f4f5ff;
+    display: inline-flex;
+    margin: 3px 5px 0px 5px;
+}
+
+header .shortcut-menu-awal{
+    display: flex;
+    gap: 20px;
+    text-decoration:underline;
+    font-size: medium;
+    align-items: center;
+    justify-content: center;
+}
+
+header .container-fluid .d-flex{
+    width: 60%;
+}
+
+
+/* main  */
+
+main{
+    font-family: 'Ibarra Real Nova';
+    display: flex;
+    justify-content:center; /* Mengatur konten horizontal di tengah */
+    align-items:center; /* Mengatur konten vertikal di tengah */
+    flex-direction: column;
+
+}
+main h3{
+    display:flex;
+    justify-content:center;
+    font-weight: 500;
+}
+
+
+/*main, page : lomba-2*/
+.detail-kegiatan{
+    display: block;
+    justify-content:center;
+    background-color:white;
+    margin:1cm;
+    padding: 1cm;
+}
+
+.detail-kegiatan img{
+    width:500px;
+}
+
+.detail-kegiatan .icon{
+    display: flex;
+    justify-content:right
+}
+
+.detail-kegiatan .tempat-tanggal{
+    display: flex;
+    justify-content:space-between;
+}
+
+.detail-kegiatan .benefit{
+    margin-left: 10px;
+}
+
+.detail-kegiatan i{
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.tanggal{
+    display: flex;
+    padding: 10px;
+}
+
+.pelaksana{
+    display: flex;
+}
+
+.detail-kegiatan .pelaksana img{
+    width: auto;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid rgb(176, 176, 176);
+    margin: 0px 15px 0px 10px;
+}
+
+.pelaksana .pelaksana-detail{
+    margin-right: 10px;
+}
+/*main, page : pilihpostingan*/
+.to-edit, .to-delete{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%; /* Mengisi lebar 100% dari parent */
+    padding-right: 2cm;
+}
+
+/*main, page : lomba-1*/
+.edit-lomba-1{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%; /* Mengisi lebar 100% dari parent */
+    gap: 10px;
+    padding-left: 2cm;
+}
+
+/*main, page : homepage-1*/
+.kegiatan{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    text-decoration: underline;
+}
+
+.kegiatan h4{
+    width:100%;
+}
+
+.kegiatan .etalase-kegiatan{
+    display:grid;
+    grid-template-columns: repeat(4, 5fr); /* Membagi ruang menjadi 4 kolom dengan lebar yang sama */
+    grid-gap: 20px;
+    width: 100%;
+}
+.kegiatan .etalase-kegiatan img{
+    width: 100%;
+}
+
+/*main, page : edit*/
+.detail-kegiatan-edit{
+    display: block;
+    justify-content:center;
+    background-color:white;
+    margin:1cm;
+    padding: 1cm;
+}
+
+.detail-kegiatan-edit img{
+    width:min-content;
+}
+
+.detail-kegiatan-edit form{
+    border-top: 2px solid black;
+}
+
+.detail-kegiatan-edit .row{
+    display: flex;
+    justify-content:center;
+    margin: 20px;
+}
+
+.detail-kegiatan-edit .col-sm-6{
+    display: flex;
+    font-size:150%;
+}
+
+form .col-sm-6 h4{
+    margin-right: 10px;
+}
+
+.detail-kegiatan-edit .btn{
+    margin-top: 10px;
+    width: fit-content;
+}
+
+/*main, page :disimpan1*/
+.etalase-postingan{
+    display:grid;
+    grid-template-columns: repeat(4, 5fr); /* Membagi ruang menjadi 4 kolom dengan lebar yang sama */
+    grid-gap: 20px;
+    width: 100%;
+    padding: 30px;
+}
+
+.etalase-postingan .kartu{
+    background-color: none;
+    width: 100%;
+	display: flex;
+    flex-direction: column;
+	align-items: center;
+	justify-content: center;
+    margin: 10px;
+}
+.etalase-postingan .btn{
+    margin-top: 10px;
+    width: fit-content;
+}
+
+.box{
+    border: 10px solid black;
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px 30px 10px;
+    gap: 10px;
+}
+.box{
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px 30px 10px;
+}
+.box .iconterm{
+    display: flex;
+    width: 100%;
+    justify-content: right;
+}
+
+.box i{
+    border: 1px solid black;
+    padding: 1px 3px 1px 3px;
+    border-radius: 5px;
+
+}
+
+.box .text-field{
+    margin: 10px 20px 10px 20px;
+}
+
+.box h2{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size:30px;
+    font-weight: 1000;
+    margin-bottom: 30px;
+}
+
+.box h5{
+    width: 100%;
+    gap: 0;
+    font-weight: 1000;
+}
+.box form{
+    width: 80%;
+}

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title-page', 'Postingan yang Dipilih')
+@section('title', 'Postingan yang Dipilih')
 
 @section('content')
 
@@ -20,25 +20,31 @@
         <div class="tempat-tanggal">
             <div class="tanggal">
                 <i class="far fa-calendar-alt"></i>
-                <h6>{{ $kegiatan->tanggal }}</h6>
+                <h6>tanggal</h6>
+                {{-- <h6>{{ $kegiatan->tanggal }}</h6> --}}
             </div>
             <div class="tempat">
                 <i class="fa-solid fa-location-dot" style="color: #f41010;"></i>
-                <a href="/linkzoom-atau-mapslokasi" style="font-size: 20px">{{$kegiatan->lokasi}}</a>
+                <a href="/linkzoom-atau-mapslokasi" style="font-size: 20px">lokasi</a>
+                {{-- <a href="/linkzoom-atau-mapslokasi" style="font-size: 20px">{{$kegiatan->lokasi}}</a> --}}
             </div>
         </div>
         <br>
         <div class="benefit">
             <h5>Benefit</h5>
-            <p>{{$kegaitan->benefit}}</p>
+            <p>benefit</p>
+            {{-- <p>{{$kegaitan->benefit}}</p> --}}
         </div>
         <hr>
         <div class="pelaksana">
-            <img src="{{asset('public/images/poster'.$kegiatan->poster_postingan)}}" alt="/pelaksanalogo">
+            <img src="{{asset('public/images/poster')}}" alt="/pelaksanalogo">
+            {{-- <img src="{{asset('public/images/poster'.$kegiatan->poster_postingan)}}" alt="/pelaksanalogo"> --}}
             <div class="pelaksana-detail">
-                <h5>{{$kegiatan->ig_pelaksana}}</h5>
+                <h5>akunigpelaksana</h5>
+                {{-- <h5>{{$kegiatan->ig_pelaksana}}</h5> --}}
                 <!--nama pelaksana-->
-                <h6>{{$kegiatan->email_pelaksana}}</h6>
+                <h6>email pelaksana</h6>
+                {{-- <h6>{{$kegiatan->email_pelaksana}}</h6> --}}
                 <!--email pelaksana-->
             </div>
         </div>

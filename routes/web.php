@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\auth\LoginRegisterController;
+use GuzzleHttp\Promise\Create;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +40,10 @@ Route::get('tambahkegiatan', function () {
 
 Route::get('homepageadmin', function () {
     return view('admin.homepage_admin');
+});
+
+Route::get('app', function () {
+    return view('layouts.app');
 });
 
 
