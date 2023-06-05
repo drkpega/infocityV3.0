@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\auth\LoginRegisterController;
@@ -23,14 +24,20 @@ Route::get('/', function () {
 
 Route::controller(HomeController::class)->group(function () {
     Route::get('/admin/homepage', 'index');
-    // Route::get('/pegawai/store', 'store');
     Route::get('/postingan/tambah', 'tambah');
     Route::post('/postingan/store', 'store');
-    // Route::get('/postingan/edit/{id}', 'edit');
     Route::get('/postingan/hapus/{id}', 'delete');
 
+    Route::get('/postingan/{id}', 'delete');
+    // Route::get('/postingan/edit/{id}', 'edit');
 });
 
+Route::controller(ProfileController::class)->group(function () {
+    Route::get('/user/profile', 'index');
+    Route::get('/user/password/update/{id}', 'update_password');
+    Route::get('/user/profile/update/{id}', 'update_profile');
+    Route::get('/user/profile/hapus/{id}', 'delete');
+});
 
 Route::controller(LoginRegisterController::class)->group(function () {
     Route::get('/register', 'register')->name('register');
@@ -42,18 +49,6 @@ Route::controller(LoginRegisterController::class)->group(function () {
 });
 Route::get('detailpostingan', function () {
     return view('admin.detailpostingan');
-});
-
-Route::get('tambahkegiatan', function () {
-    return view('admin.tambah_kegiatan');
-});
-
-Route::get('homepageadmin', function () {
-    return view('admin.homepage_admin');
-});
-
-Route::get('app', function () {
-    return view('layouts.app');
 });
 
 Route::get('homepageuser', function () {

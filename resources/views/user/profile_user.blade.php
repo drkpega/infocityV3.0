@@ -10,6 +10,8 @@
                 <div class="col-lg-8">
                     <div class="card mb-4">
                         <div class="card-body">
+                            <form action="/user/profile/edit" method="POST">
+                            {{ csrf_field() }}
                             <h4>
                                 <center> <b>Ganti Password</b></center>
                             </h4>
@@ -32,8 +34,8 @@
                                 </div>
                             </div>
                             <br>
-                            <button type="button" class="btn" style="float: right; background-color : #FFCFBF; ">Ganti
-                                Password</button>
+                            <button type="button" class="btn" style="float: right; background-color : #FFCFBF; ">Ganti Password</button>
+                            </form>
                         </div>
                         <div class="card-body">
                             <h4>
