@@ -46,4 +46,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function favorite()
+    {
+        return $this->hasOne('App\Models\Favorite', 'id_user');
+    }
 }

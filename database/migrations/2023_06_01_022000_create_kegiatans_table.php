@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('poster_postingan');
             $table->string('jenis_kegiatan');
             $table->string('tanggal');
-            $table->string('lokasi');
+            $table->text('lokasi');
             $table->string('caption');
             $table->string('ig_pelaksana');
             $table->string('email_pelaksana');

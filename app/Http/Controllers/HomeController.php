@@ -72,6 +72,7 @@ class HomeController extends Controller
 
         // $poster = Kegiatan::where('id', $id)->first();
         // Kegiatan::delete('images/kegiatan/' . $poster->poster_postingan);
+
         return redirect('/admin/homepage');
     }
 }
