@@ -9,14 +9,22 @@
     <div class="detail-kegiatan-edit">
         <center><img src="./image/poster.png" alt="/poster"></center>
         <br>
-        <form action="{{route ('store')}}" method="POST" enctype="multipart/form-data">
-            {{-- <form method="POST" enctype="multipart/form-data"> --}}
-        @csrf
+        <form action="/postingan/store" method="POST" enctype="multipart/form-data">
+            <!-- {{-- <form method="POST" enctype="multipart/form-data"> --}} -->
+            {{ csrf_field() }}
             <div class="row">
                 <label for="inputNamaKegiatan" class="col-sm-3 col-form-label">Nama Kegiatan</label>
                 <div class="col-sm-6">
                     <h4>:</h4>
                     <input type="text" class="form-control" id="inputNamaKegiatan" placeholder="Masukkan Nama Kegiatan" name="nama_kegiatan">
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="inputNamaKegiatan" class="col-sm-3 col-form-label">jenis_kegiatan</label>
+                <div class="col-sm-6">
+                    <h4>:</h4>
+                    <input type="text" class="form-control" id="jenis_kegiatan" placeholder="Masukkan Nama Kegiatan" name="jenis_kegiatan">
                 </div>
             </div>
 

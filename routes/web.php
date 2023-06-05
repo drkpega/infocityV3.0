@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\auth\LoginRegisterController;
 use GuzzleHttp\Promise\Create;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/posts', \App\Http\Controllers\HomeController::class);
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/admin/homepage', 'index');
+    // Route::get('/pegawai/store', 'store');
+    Route::get('/postingan/tambah', 'tambah');
+    Route::post('/postingan/store', 'store');
+    // Route::get('/postingan/edit/{id}', 'edit');
+    Route::get('/postingan/hapus/{id}', 'delete');
+
+});
+
 
 Route::controller(LoginRegisterController::class)->group(function () {
     Route::get('/register', 'register')->name('register');
@@ -65,5 +75,3 @@ Route::get('favorite', function () {
 Route::get('kategorikegiatan', function () {
     return view('user.kategori_kegiatan');
 });
-
-Route::resource('/posts', \App\Http\Controllers\HomeController::class);

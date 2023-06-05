@@ -16,169 +16,62 @@ class HomeController extends Controller
      *
      * @return View
      */
-    public function index(): View
+    public function index()
     {
         //get posts
-        $kegiatans = Kegiatan::latest()->paginate(5);
-
-        //render view with posts
-        return view('admin.homepage_admin', compact('kegiatans'));
+        // $kegiatan = kegiatan::where('jenis_kegiatan', 'Lomba')->get();
+        $kegiatan = kegiatan::all();
+        // mengirim data pegawai ke view pegawai
+        return view('admin.homepage_admin', ['kegiatan' => $kegiatan]);
     }
-    /**
-     * create
-     *
-     * @return View
-     */
-    public function create(): View
+
+    public function tambah()
     {
         return view('admin.tambah_kegiatan');
     }
-    /**
-     * store
-     *
-     * @param  mixed $request
-     * @return RedirectResponse
-     */
-    public function store(Request $request): RedirectResponse
-    {
 
-        //validate form
+    public function store(Request $request)
+    {
         $this->validate($request, [
-            'nama_kegiatan' => 'required|min:5',
-            'poster_postingan' => 'required|image|mimes:jpeg,jpg,png|max:2048',
+            'nama_kegiatan' => 'required',
+            'poster_postingan' => 'required',
+            'jenis_kegiatan' => 'required',
             'tanggal' => 'required',
             'lokasi' => 'required',
             'caption' => 'required',
             'ig_pelaksana' => 'required',
-            'email_pelaksana' => 'required|email',
+            'email_pelaksana' => 'required',
             'link_pendaftaran' => 'required',
-            'benefit' => 'required',
+            'benefit' => 'required'
         ]);
 
-        //upload image
-        $image = $request->file('poster_postingan');
-        $image->storeAs('public/images/poster', $image->hashName());
+        $poster = $request->file('poster_postingan');
+        $tujuan_upload = 'images/kegiatan';
+        $poster->move($tujuan_upload, $poster->getClientOriginalName());
 
-        //create post
         Kegiatan::create([
             'nama_kegiatan' => $request->nama_kegiatan,
-            'poster_postingan' => $image->hashName(),
+            'poster_postingan' => $request->poster_postingan,
+            'jenis_kegiatan' => $request->jenis_kegiatan,
             'tanggal' => $request->tanggal,
             'lokasi' => $request->lokasi,
             'caption' => $request->caption,
             'ig_pelaksana' => $request->ig_pelaksana,
             'email_pelaksana' => $request->email_pelaksana,
             'link_pendaftaran' => $request->link_pendaftaran,
-            'benefit' => $request->benefit,
+            'benefit' => $request->benefit
         ]);
 
-        //redirect to index
-        return redirect()->route('user.homepage_user')->with(['success' => 'Data Berhasil Disimpan!']);
-    }
-    public function show(string $id): View
-    {
-        //get post by ID
-        $kegiatan = Kegiatan::findOrFail($id);
-
-        //render view with post
-        return view('posts.show', compact('kegiatan'));
+        return redirect('/admin/homepage');
     }
 
-    /**
-     * edit
-     *
-     * @param  mixed $id
-     * @return View
-     */
-    public function edit(string $id): View
+    public function delete($id)
     {
-        //get post by ID
-        $kegiatan = Kegiatan::findOrFail($id);
+        $kegiatan = Kegiatan::find($id);
+        $kegiatan->delete();
 
-        //render view with post
-        return view('posts.edit', compact('kegiatan'));
-    }
-
-    /**
-     * update
-     *
-     * @param  mixed $request
-     * @param  mixed $id
-     * @return RedirectResponse
-     */
-    public function update(Request $request, $id): RedirectResponse
-    {
-        //validate form
-        $this->validate($request, [
-            'nama_kegiatan' => 'required|min:5',
-            'poster_postingan' => 'required|image|mimes:jpeg,jpg,png|max:2048',
-            'tanggal' => 'required',
-            'lokasi' => 'required',
-            'caption' => 'required',
-            'ig_pelaksana' => 'required',
-            'email_pelaksana' => 'required|email',
-            'link_pendaftaran' => 'required',
-            'benefit' => 'required',
-        ]);
-
-        //get post by ID
-        $kegiatan = Kegiatan::findOrFail($id);
-
-        //check if image is uploaded
-        if ($request->hasFile('poster_postingan')) {
-
-            //upload new image
-            $image = $request->file('poster_postingan');
-            $image->storeAs('public/posts', $image->hashName());
-
-            //delete old image
-            Storage::delete('public/posts/' . $kegiatan->image);
-
-            //update post with new image
-            $kegiatan->update([
-                'nama_kegiatan' => $request->nama_kegiatan,
-                'poster_postingan' => $image->hashName(),
-                'tanggal' => $request->tanggal,
-                'lokasi' => $request->lokasi,
-                'caption' => $request->caption,
-                'ig_pelaksana' => $request->ig_pelaksana,
-                'email_pelaksana' => $request->email_pelaksana,
-                'link_pendaftaran' => $request->link_pendaftaran,
-                'benefit' => $request->benefit,
-            ]);
-
-        } else {
-
-            //update post without image
-            $kegiatan->update([
-                'nama_kegaitan' => $request->nama_kegiatan,
-                'lokasi' => $request->lokasi
-            ]);
-        }
-
-        //redirect to index
-        return redirect()->route('posts.homepage')->with(['success' => 'Data Berhasil Diubah!']);
-    }
-
-
-    /**
-     * destroy
-     *
-     * @param  mixed $post
-     * @return void
-     */
-    public function destroy($id): RedirectResponse
-    {
-        //get post by ID
-        $post = Kegiatan::findOrFail($id);
-
-        //delete image
-        Storage::delete('public/posts/' . $post->image);
-
-        //delete post
-        $post->delete();
-
-        //redirect to index
-        return redirect()->route('posts.homepage')->with(['success' => 'Data Berhasil Dihapus!']);
+        // $poster = Kegiatan::where('id', $id)->first();
+        // Kegiatan::delete('images/kegiatan/' . $poster->poster_postingan);
+        return redirect('/admin/homepage');
     }
 }
