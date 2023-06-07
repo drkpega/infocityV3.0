@@ -18,7 +18,7 @@
             <div class="etalase-postingan">
                 @foreach($kegiatan as $k)
                 <div class="kartu">
-                    <a href="/postingan/edit/{{ $k->id }}"><img src="/images/kegiatan/{{$k -> id}}" alt="/poster1"></a>
+                    <a href="/postingan/detail/{{ $k->id }}"><img style="width:259px; height:350px;" src="/images/kegiatan/{{$k -> poster_postingan}}" alt="poster"></a>
                     <h5>{{ $k->nama_kegiatan }}</h5>
                     <a href="/postingan/hapus/{{ $k->id }}" onclick="return confirm('Are you sure?')"><button  x-show="open" type="button" class="btn btn-danger">X Hapus</button></a>
                 </div>

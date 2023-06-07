@@ -24,7 +24,12 @@
                 <label for="inputNamaKegiatan" class="col-sm-3 col-form-label">jenis_kegiatan</label>
                 <div class="col-sm-6">
                     <h4>:</h4>
-                    <input type="text" class="form-control" id="jenis_kegiatan" placeholder="Masukkan Nama Kegiatan" name="jenis_kegiatan">
+                    <select class="form-control" name="jenis_kegiatan" id="jenis_kegiatan">
+                        <option value="1">Beasiswa</option>
+                        <option value="2">Event</option>
+                        <option value="3">Lomba</option>
+                        <option value="4">Volunteer</option>
+                    </select>
                 </div>
             </div>
 

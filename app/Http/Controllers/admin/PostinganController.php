@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
-use App\Models\Kegiatan;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Kegiatan;
 use illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
-// Controller untuk postingan admin
-class HomeController extends Controller
+class PostinganController extends Controller
 {
     //
     /**
@@ -17,6 +17,7 @@ class HomeController extends Controller
      *
      * @return View
      */
+
 
     public function index()
     {
@@ -28,40 +29,39 @@ class HomeController extends Controller
     }
 
     // Lomba
-    public function home_lomba()
+    public function kegiatan_lomba()
     {
         //get posts
-        // $kegiatan = kegiatan::where('jenis_kegiatan', 'Lomba')->get();
-        $kegiatan = kegiatan::all();
+        $kegiatan = kegiatan::where('jenis_kegiatan', '3')->get();
         return view('admin.kegiatan.lomba', ['kegiatan' => $kegiatan]);
     }
 
     // event
-    public function home_event()
+    public function kegiatan_event()
     {
         //get posts
-        // $kegiatan = kegiatan::where('jenis_kegiatan', 'Lomba')->get();
-        $kegiatan = kegiatan::all();
+        $kegiatan = kegiatan::where('jenis_kegiatan', '2')->get();
         return view('admin.kegiatan.event', ['kegiatan' => $kegiatan]);
     }
 
     // beasiswa
-    public function home_beasiswa()
+    public function kegiatan_beasiswa()
     {
         //get posts
-        // $kegiatan = kegiatan::where('jenis_kegiatan', 'Lomba')->get();
-        $kegiatan = kegiatan::all();
+        $kegiatan = kegiatan::where('jenis_kegiatan', '1')->get();
         return view('admin.kegiatan.beasiswa', ['kegiatan' => $kegiatan]);
     }
 
     // volunteer
-    public function home_volunteer()
+    public function kegaitan_volunteer()
     {
-        //get posts
-        // $kegiatan = kegiatan::where('jenis_kegiatan', 'Lomba')->get();
-        $kegiatan = kegiatan::all();
+        //get posts volunteer (4)
+        $kegiatan = kegiatan::where('jenis_kegiatan', '4')->get();
         return view('admin.kegiatan.volunteer', ['kegiatan' => $kegiatan]);
     }
+
+
+
 
     public function tambah()
     {
@@ -112,5 +112,12 @@ class HomeController extends Controller
         // Kegiatan::delete('images/kegiatan/' . $poster->poster_postingan);
 
         return redirect('/admin/homepage');
+    }
+
+    public function detail($id)
+    {
+        $kegiatan = Kegiatan::find($id);
+
+        return view('admin.detailpostingan', ['kegiatan' => $kegiatan]);
     }
 }

@@ -47,5 +47,15 @@
     @yield('content')
 
 </div>
+<!-- <script>
+function copyURL(evt) {
+    evt.preventDefault();
+    navigator.clipboard.writeText(event.target.getAttribute('href')).then(() => {
+      /* clipboard successfully set */
+    }, () => {
+      /* clipboard write failed */
+    });
+}
+    </script> -->
 </body>
 </html>

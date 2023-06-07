@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\PostinganController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -22,16 +23,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::controller(HomeController::class)->group(function () {
+// admin
+Route::controller(PostinganController::class)->group(function () {
     Route::get('/admin/homepage', 'index');
+
     Route::get('/postingan/tambah', 'tambah');
     Route::post('/postingan/store', 'store');
-    Route::get('/postingan/hapus/{id}', 'delete');
+    Route::get('/postingan/detail/{id}', 'detail');
 
-    Route::get('/postingan/{id}', 'delete');
     // Route::get('/postingan/edit/{id}', 'edit');
+    // Route::post('/postingan/update/{id}', 'update');
+
+    Route::get('/postingan/hapus/{id}', 'delete');
+    Route::get('/postingan/{id}', 'delete');
+
+    Route::get('/admin/lomba', 'kegiatan_lomba');
+    Route::get('/admin/event', 'kegiatan_event');
+    Route::get('/admin/beasiswa', 'kegiatan_beasiswa');
+    Route::get('/admin/volunteer', 'kegiatan_volunteer');
 });
 
+// user profile
 Route::controller(ProfileController::class)->group(function () {
     Route::get('/user/profile', 'index');
     Route::get('/user/password/update/{id}', 'update_password');
@@ -39,6 +51,7 @@ Route::controller(ProfileController::class)->group(function () {
     Route::get('/user/profile/hapus/{id}', 'delete');
 });
 
+// auth
 Route::controller(LoginRegisterController::class)->group(function () {
     Route::get('/register', 'register')->name('register');
     Route::post('/store', 'store')->name('store');
