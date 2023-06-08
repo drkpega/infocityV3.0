@@ -158,19 +158,46 @@ form .col-sm-6 h4 {
     width: 100%;
 }
 
-.kegiatan .etalase-kegiatan {
+/* .kegiatan .etalase-kegiatan {
     display: grid;
     grid-template-columns: repeat(
         4,
         5fr
-    ); /* Membagi ruang menjadi 4 kolom dengan lebar yang sama*/
+    ); /* Membagi ruang menjadi 4 kolom dengan lebar yang sama
     grid-gap: 20px;
     width: 100%;
+} */
+.kegiatan .carousel{
+    width: 50%;
+    display: flex;
+    align-items: centers;
+    justify-content: center;
 }
-.kegiatan .etalase-kegiatan img {
+.carousel-inner{
+    width: 500px;
+
+}
+.carousel-inner img{
     width: 100%;
 }
 
+.nav-item i {
+    border: 1px solid rgb(176, 176, 176);
+    border-radius: 180px;
+    padding: 10px;
+    background-color: #f4f5ff;
+    display: inline-flex;
+    margin: 3px 5px 0px 5px;
+}
+
+.collapse{
+    justify-content: center;
+}
+.navbar-nav{
+    align-items: center ;
+    margin: 10px 10px 10px 10px;
+    justify-content: center;
+}
 
 /*
 .shortcut-menu i {
@@ -191,7 +218,7 @@ form .col-sm-6 h4 {
     justify-content: center;
 }
 
-.container-fluid .d-flex {
+.container .d-flex {
     width: 60%;
 }
 

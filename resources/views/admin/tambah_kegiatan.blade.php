@@ -21,6 +21,22 @@
             </div>
 
             <div class="row">
+<<<<<<< Updated upstream
+=======
+                <label for="inputNamaKegiatan" class="col-sm-3 col-form-label">Jenis Kegiatan</label>
+                <div class="col-sm-6">
+                    <h4>:</h4>
+                    <select class="form-control" name="jenis_kegiatan" id="jenis_kegiatan">
+                        <option value="1">Beasiswa</option>
+                        <option value="2">Event</option>
+                        <option value="3">Lomba</option>
+                        <option value="4">Volunteer</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+>>>>>>> Stashed changes
                 <label for="inputHariTanggal" class="col-sm-3 col-form-label">Hari & Tanggal Pelaksanaan</label>
                 <div class="col-sm-6">
                     <h4>:</h4>
@@ -39,7 +55,7 @@
                 <label for="inputBenefit" class="col-sm-3 col-form-label">Benefit</label>
                 <div class="col-sm-6">
                     <h4>:</h4>
-                    <input type="text" class="form-control" id="inputBenefit" placeholder="Masukkan Benefit" name="caption">
+                    <input type="text" class="form-control" id="inputBenefit" placeholder="Masukkan Benefit" name="benefit">
                 </div>
             </div>
             <div class="row">
@@ -67,7 +83,7 @@
                 <label for="Caption" class="col-sm-3 col-form-label">Caption</label>
                 <div class="col-sm-6">
                     <h4>:</h4>
-                    <input type="text" class="form-control" placeholder="Masukkan Caption" id="Caption" style="height: 100px" name="benefit">
+                    <input type="text" class="form-control" placeholder="Masukkan Caption" id="Caption" style="height: 100px" name="caption">
                 </div>
             </div>
             <div class="row">

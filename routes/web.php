@@ -20,8 +20,39 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< Updated upstream
 Route::resource('/posts', \App\Http\Controllers\HomeController::class);
 
+=======
+// admin
+Route::controller(PostinganController::class)->group(function () {
+    Route::get('/admin/homepage', 'index');
+    Route::get('/postingan/tambah', 'tambah');
+    Route::post('/postingan/store', 'store');
+    Route::get('/postingan/detail/{id}', 'detail');
+    Route::get('/postingan/cari','search');
+    // Route::get('/postingan/edit/{id}', 'edit');
+    // Route::post('/postingan/update/{id}', 'update');
+
+    Route::get('/postingan/hapus/{id}', 'delete');
+    Route::get('/postingan/{id}', 'delete');
+
+    Route::get('/admin/lomba', 'kegiatan_lomba');
+    Route::get('/admin/event', 'kegiatan_event');
+    Route::get('/admin/beasiswa', 'kegiatan_beasiswa');
+    Route::get('/admin/volunteer', 'kegiatan_volunteer');
+});
+
+// user profile
+Route::controller(ProfileController::class)->group(function () {
+    Route::get('/user/profile', 'index');
+    Route::get('/user/password/update/{id}', 'update_password');
+    Route::get('/user/profile/update/{id}', 'update_profile');
+    Route::get('/user/profile/hapus/{id}', 'delete');
+});
+
+// auth
+>>>>>>> Stashed changes
 Route::controller(LoginRegisterController::class)->group(function () {
     Route::get('/register', 'register')->name('register');
     Route::post('/store', 'store')->name('store');
@@ -66,4 +97,8 @@ Route::get('kategorikegiatan', function () {
     return view('user.kategori_kegiatan');
 });
 
+<<<<<<< Updated upstream
 Route::resource('/posts', \App\Http\Controllers\HomeController::class);
+=======
+
+>>>>>>> Stashed changes

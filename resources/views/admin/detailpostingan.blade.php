@@ -9,6 +9,10 @@
     <div class="to-edit">
         <button type="button" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
     </div>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     <div class="detail-kegiatan">
         <center><img src="./image/poster.png" alt="/poster"></center>
         <br>
