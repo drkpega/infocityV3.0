@@ -3,13 +3,11 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Kegiatan;
-use illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class PostinganController extends Controller
+class adminController extends Controller
 {
     //
     /**
@@ -18,14 +16,17 @@ class PostinganController extends Controller
      * @return View
      */
 
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         //get posts
         // $kegiatan = kegiatan::where('jenis_kegiatan', 'Lomba')->get();
-        $kegiatan = kegiatan::all();
+        $kegiatan = Kegiatan::all();
         // mengirim data pegawai ke view pegawai
-        return view('admin.homepage_admin', ['kegiatan' => $kegiatan]);
+        return view('welcome', ['kegiatan' => $kegiatan]);
     }
 
     // Lomba
@@ -119,5 +120,21 @@ class PostinganController extends Controller
         $kegiatan = Kegiatan::find($id);
 
         return view('admin.detailpostingan', ['kegiatan' => $kegiatan]);
+    }
+
+    public function search(Request $request)
+    {
+        // menangkap data pencarian
+        $search = $request->search;
+
+
+        // mengambil data dari table pegawai sesuai pencarian data
+        $kegiatan = DB::table('kegiatan')
+            ->where('nama_kegiatan', 'like', "%" . $search . "%")
+            ->paginate();
+
+        // mengirim data pegawai ke view index
+        return view('admin.homepage_admin', ['kegiatan' => $kegiatan]);
+
     }
 }

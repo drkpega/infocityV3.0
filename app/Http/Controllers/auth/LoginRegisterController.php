@@ -4,6 +4,7 @@ namespace App\Http\Controllers\auth;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -15,11 +16,10 @@ class LoginRegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except([
-            'logout',
-            'dashboard'
-        ]);
+        $this->middleware('guest')->except('logout');
     }
+
+
 
     /**
      * Display a registration form.
@@ -56,7 +56,7 @@ class LoginRegisterController extends Controller
         $credentials = $request->only('email', 'password');
         Auth::attempt($credentials);
         $request->session()->regenerate();
-        return redirect('admin.homepage_admin')->withSuccess('You have successfully registered & logged in!');
+        return redirect('admin/homepage')->withSuccess('You have successfully registered & logged in!');
     }
 
     /**
@@ -75,22 +75,32 @@ class LoginRegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    use AuthenticatesUsers;
+
     public function authenticate(Request $request)
     {
+        $input = $request->all();
+
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->route('dashboard')
-                ->withSuccess('You have successfully logged in!');
+        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
+            if (auth()->user()->type == 'admin') {
+                return redirect()->route('admin.home');
+            } else if (auth()->user()->type == 'manager') {
+                return redirect()->route('manager.home');
+            } else {
+                return redirect()->route('home');
+            }
+        } else {
+            return back()->withErrors([
+                'email' => 'Email or Password Are Wrong.',
+            ])->onlyInput('email');
         }
 
-        return back()->withErrors([
-            'email' => 'Your provided credentials do not match in our records.',
-        ])->onlyInput('email');
+
 
     }
 

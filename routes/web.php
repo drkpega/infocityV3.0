@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\admin\PostinganController;
+use App\Http\Controllers\admin\adminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -18,38 +18,59 @@ use App\Http\Controllers\HomeController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
+// guest
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/', 'index');
 });
 
-// admin
-Route::controller(PostinganController::class)->group(function () {
-    Route::get('/admin/homepage', 'index');
 
-    Route::get('/postingan/tambah', 'tambah');
-    Route::post('/postingan/store', 'store');
-    Route::get('/postingan/detail/{id}', 'detail');
+/*------------------------------------------
+--------------------------------------------
+All Normal Users Routes List
+--------------------------------------------
+--------------------------------------------*/
+Route::middleware(['auth', 'user-access:user'])->group(function () {
 
-    // Route::get('/postingan/edit/{id}', 'edit');
-    // Route::post('/postingan/update/{id}', 'update');
+    Route::controller(ProfileController::class)->group(function () {
+        Route::get('/user/profile', 'index');
+        Route::get('/user/password/update/{id}', 'update_password');
+        Route::get('/user/profile/update/{id}', 'update_profile');
+        Route::get('/user/profile/hapus/{id}', 'delete');
 
-    Route::get('/postingan/hapus/{id}', 'delete');
-    Route::get('/postingan/{id}', 'delete');
-
-    Route::get('/admin/lomba', 'kegiatan_lomba');
-    Route::get('/admin/event', 'kegiatan_event');
-    Route::get('/admin/beasiswa', 'kegiatan_beasiswa');
-    Route::get('/admin/volunteer', 'kegiatan_volunteer');
+    });
 });
 
-// user profile
-Route::controller(ProfileController::class)->group(function () {
-    Route::get('/user/profile', 'index');
-    Route::get('/user/password/update/{id}', 'update_password');
-    Route::get('/user/profile/update/{id}', 'update_profile');
-    Route::get('/user/profile/hapus/{id}', 'delete');
+/*------------------------------------------
+--------------------------------------------
+All Admin Routes List
+--------------------------------------------
+--------------------------------------------*/
+Route::middleware(['auth', 'user-access:admin'])->group(function () {
+
+    Route::controller(adminController::class)->group(function () {
+        Route::get('/admin', 'index');
+        Route::get('/admin/homepage', 'index');
+
+        Route::get('/postingan/tambah', 'tambah');
+        Route::post('/postingan/store', 'store');
+        Route::get('/postingan/detail/{id}', 'detail');
+        Route::get('/postingan/search', 'search');
+
+        // Route::get('/postingan/edit/{id}', 'edit');
+        // Route::post('/postingan/update/{id}', 'update');
+
+        Route::get('/postingan/hapus/{id}', 'delete');
+        Route::get('/postingan/{id}', 'delete');
+
+        Route::get('/admin/lomba', 'kegiatan_lomba');
+        Route::get('/admin/event', 'kegiatan_event');
+        Route::get('/admin/beasiswa', 'kegiatan_beasiswa');
+        Route::get('/admin/volunteer', 'kegiatan_volunteer');
+    });
 });
+
 
 // auth
 Route::controller(LoginRegisterController::class)->group(function () {
@@ -58,7 +79,7 @@ Route::controller(LoginRegisterController::class)->group(function () {
     Route::get('/login', 'login')->name('login');
     Route::post('/authenticate', 'authenticate')->name('authenticate');
     Route::get('/dashboard', 'dashboard')->name('dashboard');
-    Route::post('/logout', 'logout')->name('logout');
+    Route::get('/logout', 'logout')->name('logout');
 });
 Route::get('detailpostingan', function () {
     return view('admin.detailpostingan');

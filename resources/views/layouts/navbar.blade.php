@@ -11,10 +11,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav m-auto ">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2 mr-2" type="search" placeholder="Mau cari info apa?"
-                        aria-label="Search">
-                    <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                <form action="/postingan/search" method="GET" class="d-flex" role="search">
+                    <input class="form-control me-2 mr-2" type="text" placeholder="Mau cari info apa?"
+                        aria-label="Search" value="{{ old('search') }}">
+                    <button class="btn btn-primary" type="submit" value="CARI"><i class="fas fa-search"></i></button>
                 </form>
             </ul>
 
@@ -34,22 +34,10 @@
                         </li>
                     @endif
                 @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <i class="fas fa-sign-out-alt"></i>
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
+                    <li class="nav-item">
+                        <a href="{{ route('logout') }}"><i class="fa-solid fa-right-from-bracket mx-1"></i></a>
+                        <a href=""><i class="fa-regular fa-user mx-1"></i></a>
+                        <a href=""><i class="fa-regular fa-bookmark mx-1"></i></a>
                     </li>
                 @endguest
             </ul>
