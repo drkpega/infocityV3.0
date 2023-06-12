@@ -19,7 +19,7 @@ class DataUser extends Seeder
         DB::table('users')->insert(
             [
                 'nama_user' => 'Admin Infocity',
-                'kode_user' => '1',
+                'kode_user' => 1,
                 'email' => 'infocity@gmail.com',
                 'username' => 'admininfocity',
                 'password' => bcrypt('admin123'),

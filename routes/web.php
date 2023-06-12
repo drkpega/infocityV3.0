@@ -31,7 +31,7 @@ Route::controller(HomeController::class)->group(function () {
 All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::middleware(['auth', 'user-access:user'])->group(function () {
+Route::middleware(['auth', 'check-role:user'])->group(function () {
 
     Route::controller(ProfileController::class)->group(function () {
         Route::get('/user/profile', 'index');
@@ -47,11 +47,10 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
 All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::middleware(['auth', 'user-access:admin'])->group(function () {
+Route::middleware(['auth', 'check-role:admin'])->group(function () {
 
     Route::controller(adminController::class)->group(function () {
         Route::get('/admin', 'index');
-        Route::get('/admin/homepage', 'index');
 
         Route::get('/postingan/tambah', 'tambah');
         Route::post('/postingan/store', 'store');
@@ -78,7 +77,6 @@ Route::controller(LoginRegisterController::class)->group(function () {
     Route::post('/store', 'store')->name('store');
     Route::get('/login', 'login')->name('login');
     Route::post('/authenticate', 'authenticate')->name('authenticate');
-    Route::get('/dashboard', 'dashboard')->name('dashboard');
     Route::get('/logout', 'logout')->name('logout');
 });
 Route::get('detailpostingan', function () {
@@ -104,3 +102,6 @@ Route::get('favorite', function () {
 Route::get('kategorikegiatan', function () {
     return view('user.kategori_kegiatan');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

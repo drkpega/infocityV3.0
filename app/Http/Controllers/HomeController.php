@@ -4,26 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Models\Kegiatan;
 use Illuminate\Http\Request;
-use illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Storage;
 
-// Controller untuk postingan admin
 class HomeController extends Controller
 {
-    //
     /**
-     * index
+     * Create a new controller instance.
      *
-     * @return View
+     * @return void
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function index()
     {
+
         //get posts
         // $kegiatan = kegiatan::where('jenis_kegiatan', 'Lomba')->get();
-        $kegiatan = kegiatan::all();
-        // mengirim data pegawai ke view pegawai
+        $kegiatan = Kegiatan::all();
         return view('welcome', ['kegiatan' => $kegiatan]);
+
     }
+
 }

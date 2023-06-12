@@ -5,6 +5,7 @@ namespace App\Http\Controllers\auth;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -77,22 +78,21 @@ class LoginRegisterController extends Controller
      */
     use AuthenticatesUsers;
 
-    public function authenticate(Request $request)
+
+    public function authenticate(Request $request): RedirectResponse
     {
         $input = $request->all();
 
-        $credentials = $request->validate([
+        $credentials = $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required'
         ]);
 
         if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
-            if (auth()->user()->type == 'admin') {
-                return redirect()->route('admin.home');
-            } else if (auth()->user()->type == 'manager') {
-                return redirect()->route('manager.home');
+            if (auth()->user()->kode_user == 'admin') {
+                return redirect('admin');
             } else {
-                return redirect()->route('home');
+                return redirect('user/profile');
             }
         } else {
             return back()->withErrors([
@@ -109,17 +109,6 @@ class LoginRegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function dashboard()
-    {
-        if (Auth::check()) {
-            return view('admin.homepage_admin');
-        }
-
-        return redirect()->route('login')
-            ->withErrors([
-                'email' => 'Please login to access the dashboard.',
-            ])->onlyInput('email');
-    }
 
     /**
      * Log out the user from application.
