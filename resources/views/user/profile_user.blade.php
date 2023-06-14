@@ -85,7 +85,7 @@
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <img src="profil.png" alt="avatar" class="rounded-circle img-fluid"
+                            <img src="/public/images/profil.png" alt="avatar" class="rounded-circle img-fluid"
                                 style="width: 150px; background-image: url('background.png');">
                             <h5 class="my-3"><b>{{ Auth::user()->nama_user }} </b></h5>
                             <h5 class="my-3">{{ Auth::user()->no_telp }}</h5>
@@ -123,7 +123,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg">
+            <div class="col-lg" style="padding-left: 0px">
                 <div class="card mb-4">
                     <div class="card-body text-center">
                         <nav class="navbar navbar-expand-lg">
@@ -212,6 +212,7 @@
                                             Himtif
                                         </div>
                                     </td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">4</th>
@@ -219,6 +220,7 @@
                                     <td>Beasiswa Bank Indonesia</td>
                                     <td>
                                     </td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">5</th>
@@ -226,6 +228,7 @@
                                     <td>Beasiswa Alumni</td>
                                     <td>
                                     </td>
+                                    <td></td>
                                 </tr>
                             </tbody>
                         </table>
