@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Lomba')
+@section('title', 'Beasiswa')
 
 @section('content')
     <div x-data="{open: false}">
-        <h3>Lomba</h3>
+        <h3>Beasiswa</h3>
 
         <div class="edit-lomba-1">
             <button type="button" class=" btn btn-secondary" x-show="open" @click="open=false">Back</button>

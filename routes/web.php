@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\auth\LoginRegisterController;
+use App\Http\Controllers\admin\PostinganController;
 use GuzzleHttp\Promise\Create;
 
 /*
@@ -20,10 +21,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-<<<<<<< Updated upstream
-Route::resource('/posts', \App\Http\Controllers\HomeController::class);
-
-=======
 // admin
 Route::controller(PostinganController::class)->group(function () {
     Route::get('/admin/homepage', 'index');
@@ -41,6 +38,7 @@ Route::controller(PostinganController::class)->group(function () {
     Route::get('/admin/event', 'kegiatan_event');
     Route::get('/admin/beasiswa', 'kegiatan_beasiswa');
     Route::get('/admin/volunteer', 'kegiatan_volunteer');
+    Route::get('user/homepage', 'index2');
 });
 
 // user profile
@@ -49,10 +47,10 @@ Route::controller(ProfileController::class)->group(function () {
     Route::get('/user/password/update/{id}', 'update_password');
     Route::get('/user/profile/update/{id}', 'update_profile');
     Route::get('/user/profile/hapus/{id}', 'delete');
+
 });
 
 // auth
->>>>>>> Stashed changes
 Route::controller(LoginRegisterController::class)->group(function () {
     Route::get('/register', 'register')->name('register');
     Route::post('/store', 'store')->name('store');
@@ -62,6 +60,10 @@ Route::controller(LoginRegisterController::class)->group(function () {
     Route::post('/logout', 'logout')->name('logout');
 });
 Route::get('detailpostingan', function () {
+    return view('user.detail_postingan');
+});
+
+Route::get('detailpostinganadmin', function () {
     return view('admin.detailpostingan');
 });
 
@@ -97,8 +99,3 @@ Route::get('kategorikegiatan', function () {
     return view('user.kategori_kegiatan');
 });
 
-<<<<<<< Updated upstream
-Route::resource('/posts', \App\Http\Controllers\HomeController::class);
-=======
-
->>>>>>> Stashed changes

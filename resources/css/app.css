@@ -1,3 +1,11 @@
+html {
+
+    scroll-behavior: smooth;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 body {
     background: linear-gradient(#ffffff, #697dff, #2250e7);
     background-repeat: no-repeat;
@@ -16,6 +24,24 @@ body {
 
 .navbar-brand img {
     width: 150px;
+}
+
+.nav-item i {
+    border: 1px solid rgb(176, 176, 176);
+    border-radius: 180px;
+    padding: 10px;
+    background-color: #f4f5ff;
+    display: inline-flex;
+    margin: 3px 5px 0px 5px;
+}
+
+.collapse{
+    justify-content: center;
+}
+.navbar-nav{
+    align-items: center ;
+    margin: 10px 10px 10px 10px;
+    justify-content: center;
 }
 
 /*tambah_kegiatan*/
@@ -67,23 +93,51 @@ form .col-sm-6 h4 {
 .etalase-postingan{
     display: grid;
     grid-template-columns: repeat(
-        4,
-        5fr
-    ); /* Membagi ruang menjadi 4 kolom dengan lebar yang sama*/
+        4, 1fr
+    );
     grid-gap: 20px;
     width: 100%;
     padding: 30px;
 }
 
-.etalase-postingan .kartu{
+.etalase-postingan .card{
     background-color: none;
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 10px;
+    align-items: center;
+    padding: 10px 10px 0px 10px;
+    border-radius: 10px;
+    background-color: #a6b1ff;
+    box-shadow: 0px 0px 2px 2px #948d8d2c;
+    transition: 0.3s ease box-shadow;
 }
+
+.card:hover{
+    background-color: #bac2fb;
+    transition: 0.4s ease background-color;
+
+}
+
+.etalase-postingan .card img{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 0px 2px 2px #322e2e2c;
+    background-color: #a7bcff;
+    transition: 0.3s ease box-shadow;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.carousel-inner img:hover {
+    box-shadow: 0px 0px 10px 0 #322e2e2c;
+}
+
 .etalase-postingan .btn{
     margin-top: 10px;
     width: fit-content;
@@ -91,7 +145,8 @@ form .col-sm-6 h4 {
 
 /*detailpostingan*/
 .detail-kegiatan {
-    display: block;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     background-color: white;
     margin: 1cm;
@@ -100,6 +155,7 @@ form .col-sm-6 h4 {
 
 .detail-kegiatan img {
     width: 500px;
+    height: auto;
 }
 
 .detail-kegiatan .icon {
@@ -116,7 +172,7 @@ form .col-sm-6 h4 {
     margin-left: 10px;
 }
 
-.detail-kegiatan i {
+.detail-kegiatan i{
     font-size: 20px;
     margin-right: 10px;
 }
@@ -129,11 +185,10 @@ form .col-sm-6 h4 {
     display: flex;
 }
 
-.detail-kegiatan .pelaksana img {
+.detail-kegiatan .pelaksana img{
     width: auto;
     height: 50px;
-    border-radius: 50px;
-    border: 1px solid rgb(176, 176, 176);
+    border-radius: 5px;
     margin: 0px 15px 0px 10px;
 }
 .pelaksana .pelaksana-detail {
@@ -142,7 +197,7 @@ form .col-sm-6 h4 {
 .to-edit, .to-delete {
     display: flex;
     justify-content: space-between;
-    width: 100%; /* Mengisi lebar 100% dari paren*/
+    width: 100%;
     padding: 10px;
 }
 .edit-lomba-1 {
@@ -154,50 +209,82 @@ form .col-sm-6 h4 {
 }
 
 /*homepage-user*/
-.kegiatan h4 {
-    width: 100%;
-}
 
-/* .kegiatan .etalase-kegiatan {
+.all-kegiatan {
+    margin-top: 30px;
+    width: fit-content;
+    height: fit-content;
+    align-items: center;
+    padding: 10px;
     display: grid;
     grid-template-columns: repeat(
-        4,
-        5fr
-    ); /* Membagi ruang menjadi 4 kolom dengan lebar yang sama
-    grid-gap: 20px;
+        2,
+        4fr
+    );
+    grid-gap: 30px;
     width: 100%;
-} */
+    justify-items: center;
+}
+
+.kegiatan{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #a6b1ff;
+    width: 500px;
+    height: 400px;
+    box-shadow: 0px 0px 2px 2px #948d8d2c;
+    transition: 0.3s ease box-shadow;
+}
+
+.kegiatan:hover{
+    background-color: #bac2fb;
+    transition: 0.4s ease background-color;
+}
+
+
+.kegiatan h4{
+    padding: 10px;
+    border-radius: 50px;
+    font-size: 2rem;
+    font-weight: 4rem;
+    color: black;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    text-align: center;
+}
+
 .kegiatan .carousel{
-    width: 50%;
+    width: 100%;
     display: flex;
     align-items: centers;
     justify-content: center;
 }
+
 .carousel-inner{
-    width: 500px;
-
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 0px 10px 10px #322e2e2c;
+    transition: 0.3s ease box-shadow;
+    border-radius: 10px;
 }
+
+.carousel-inner:hover {
+    box-shadow: 0px 0px 18px 0 #322e2e2c;
+}
+
 .carousel-inner img{
-    width: 100%;
+    width: fit-content;
+    height: fit-content;
 }
 
-.nav-item i {
-    border: 1px solid rgb(176, 176, 176);
-    border-radius: 180px;
-    padding: 10px;
-    background-color: #f4f5ff;
-    display: inline-flex;
-    margin: 3px 5px 0px 5px;
-}
 
-.collapse{
-    justify-content: center;
-}
-.navbar-nav{
-    align-items: center ;
-    margin: 10px 10px 10px 10px;
-    justify-content: center;
-}
 
 /*
 .shortcut-menu i {

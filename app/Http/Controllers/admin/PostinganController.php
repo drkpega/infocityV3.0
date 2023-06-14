@@ -25,9 +25,10 @@ class PostinganController extends Controller
         // $kegiatan = kegiatan::where('jenis_kegiatan', 'Lomba')->get();
         // $kegiatan = kegiatan::all();
             $beasiswa = kegiatan::where('jenis_kegiatan', '1')->get();
+            $beasiswa = kegiatan::where('jenis_kegiatan', '1')->get();
             $event = kegiatan::where('jenis_kegiatan', '2')->get();
             $lomba = kegiatan::where('jenis_kegiatan', '3')->get();
-            $volunteer = kegiatan::where('jenis_kegiatan', '4')->get();
+            $volunteer = kegiatan::where('jenis_kegiatan', '3')->get();
         // mengirim data pegawai ke view pegawai
         return view('admin.homepage_admin', [
             'beasiswa' => $beasiswa,
@@ -37,6 +38,26 @@ class PostinganController extends Controller
         ]);
 
     }
+
+    public function index2()
+    {
+        //get posts
+        // $kegiatan = kegiatan::where('jenis_kegiatan', 'Lomba')->get();
+        // $kegiatan = kegiatan::all();
+            $beasiswa = kegiatan::where('jenis_kegiatan', '1')->get();
+            $event = kegiatan::where('jenis_kegiatan', '2')->get();
+            $lomba = kegiatan::where('jenis_kegiatan', '3')->get();
+            $volunteer = kegiatan::where('jenis_kegiatan', '3')->get();
+        // mengirim data pegawai ke view pegawai
+        return view('user.homepage_user', [
+            'beasiswa' => $beasiswa,
+            'event' => $event,
+            'lomba' => $lomba,
+            'volunteer' => $volunteer
+        ]);
+
+    }
+
 
     // Lomba
     public function kegiatan_lomba()
@@ -63,7 +84,7 @@ class PostinganController extends Controller
     }
 
     // volunteer
-    public function kegaitan_volunteer()
+    public function kegiatan_volunteer()
     {
         //get posts volunteer (4)
         $kegiatan = kegiatan::where('jenis_kegiatan', '4')->get();

@@ -21,8 +21,6 @@
             </div>
 
             <div class="row">
-<<<<<<< Updated upstream
-=======
                 <label for="inputNamaKegiatan" class="col-sm-3 col-form-label">Jenis Kegiatan</label>
                 <div class="col-sm-6">
                     <h4>:</h4>
@@ -36,7 +34,6 @@
             </div>
 
             <div class="row">
->>>>>>> Stashed changes
                 <label for="inputHariTanggal" class="col-sm-3 col-form-label">Hari & Tanggal Pelaksanaan</label>
                 <div class="col-sm-6">
                     <h4>:</h4>

@@ -4,12 +4,12 @@
 
 @section('content')
 
-    <h3>Lomba</h3>
+     <h3>Lomba</h3> {{-- ambil nama kegiatan dari database --}}
     <div class="detail-kegiatan">
-        <center><img src="./image/poster.png" alt="/poster"></center>
+        <center><img src="/image/poster.png" alt="/poster"></center>
         <br>
         <div class="icon">
-            <i class="fal fa-bookmark"></i>
+            <i class="fas fa-heart"></i>
             <i class="far fa-clone"></i>
         </div>
         <hr>
