@@ -4,11 +4,15 @@ namespace App\Http\Controllers\auth;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
+
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+
 
 class LoginRegisterController extends Controller
 {
@@ -17,7 +21,10 @@ class LoginRegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except([
+            'logout',
+            'dashboard'
+        ]);
     }
 
 
@@ -57,7 +64,8 @@ class LoginRegisterController extends Controller
         $credentials = $request->only('email', 'password');
         Auth::attempt($credentials);
         $request->session()->regenerate();
-        return redirect('admin/homepage')->withSuccess('You have successfully registered & logged in!');
+        return redirect()->route('dashboard')
+            ->withSuccess('You have successfully registered & logged in!');
     }
 
     /**
@@ -81,27 +89,22 @@ class LoginRegisterController extends Controller
 
     public function authenticate(Request $request): RedirectResponse
     {
-        $input = $request->all();
-
         $credentials = $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required'
         ]);
 
-        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
-            if (auth()->user()->kode_user == 'admin') {
-                return redirect('admin');
-            } else {
-                return redirect('user/profile');
-            }
-        } else {
-            return back()->withErrors([
-                'email' => 'Email or Password Are Wrong.',
-            ])->onlyInput('email');
+
+        if (Auth::attempt($credentials)) {
+
+            $request->session()->regenerate();
+            return redirect()->route('dashboard')
+                ->withSuccess('You have successfully logged in!');
         }
 
-
-
+        return back()->withErrors([
+            'email' => 'Your provided credentials do not match in our records.',
+        ])->onlyInput('email');
     }
 
     /**
@@ -109,6 +112,34 @@ class LoginRegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function dashboard()
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            if ($user->kode_user == 0) {
+                return redirect('/user'); // View admin
+            } elseif ($user->kode_user == 1) {
+                return redirect('/admin'); // View user
+            }
+        }
+
+        return redirect()->route('login')
+            ->withErrors([
+                'email' => 'Please login to access the dashboard.',
+            ])->onlyInput('email');
+    }
+
+    /*
+   |--------------------------------------------------------------------------
+   | Password Reset Controller
+   |--------------------------------------------------------------------------
+   |
+   | This controller is responsible for handling password reset requests
+   | and uses a simple trait to include this behavior. You're free to
+   | explore this trait and override any methods you wish to tweak.
+   |
+   */
 
     /**
      * Log out the user from application.
@@ -124,5 +155,53 @@ class LoginRegisterController extends Controller
         return redirect()->route('login')
             ->withSuccess('You have logged out successfully!');
         ;
+    }
+
+    // reset Password
+
+    /**
+     * Write code on Method
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function ForgetPassword()
+    {
+        return view('auth.password.forget');
+    }
+
+    /**
+     * Write code on Method
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function submitForgetPassword(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:users',
+        ]);
+
+        $token = Str::random(64);
+
+        DB::table('password_resets')->insert([
+            'email' => $request->email,
+            'token' => $token,
+            'created_at' => Carbon::now()
+        ]);
+
+        Mail::send('email.forgetPassword', ['token' => $token], function ($message) use ($request) {
+            $message->to($request->email);
+            $message->subject('Reset Password');
+        });
+
+        return back()->with('message', 'We have e-mailed your password reset link!');
+    }
+    /**
+     * Write code on Method
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function ResetPassword($token)
+    {
+        return view('auth.password.token', ['token' => $token]);
     }
 }

@@ -10,18 +10,18 @@
                 <div class="col-lg-8">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <form action="" method="POST">
+                            <form action="/password/reset" method="POST">
                             {{ csrf_field() }}
                             <h4>
                                 <center> <b>Ganti Password</b></center>
                             </h4>
                             <div class="card p-4" style="background-color:  #FCEAE4 ;">
                                 <div class="mb-3 row">
-                                    <label for="inputPassword" class="col-sm-3 col-form-label">Password <span
+                                    <label for="password" class="col-sm-3 col-form-label">Password <span
                                             style="color: red;"> * </span> </label>
                                     <div class="col-sm-9">
-                                        <input type="password" class="form-control" id="inputPassword"
-                                            style="background-color:  #FCEAE4 ;">
+                                        <input type="password" class="form-control" id="password"
+                                            style="background-color:  #FCEAE4 ;" name="password">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
@@ -29,25 +29,25 @@
                                             style="color: red;"> * </span> </label>
                                     <div class="col-sm-9">
                                         <input type="password" class="form-control" id="konfirPassword"
-                                            style="background-color:  #FCEAE4 ;">
+                                            style="background-color:  #FCEAE4 ;" name="konfirPassword">
                                     </div>
                                 </div>
                             </div>
                             <br>
-                            <button type="button" class="btn" style="float: right; background-color : #FFCFBF; ">Ganti Password</button>
+                            <button type="submit" class="btn" style="float: right; background-color : #FFCFBF; ">Ganti Password</button>
                             </form>
                         </div>
                         <div class="card-body">
-                            <form action="" method="POST">
+                            <form action="/user/profile/update" method="POST">
                             <h4>
                                 <center> <b>Update Profil Anda</b></center>
                             </h4>
                             <div class="card p-4" style="background-color:  #efe6f6 ;">
                                 <div class="mb-3 row">
-                                    <label for="nama" class="col-sm-3 col-form-label">Nama <span style="color: red;"> *
+                                    <label for="nama_user" class="col-sm-3 col-form-label">Nama <span style="color: red;"> *
                                         </span> </class></label>
                                     <div class="col-sm-9">
-                                        <input type="password" class="form-control" id="nama"
+                                        <input type="text" class="form-control" id="nama_user" name="nama_user"
                                             style="background-color:  #EFE6F6 ;">
                                     </div>
                                 </div>
@@ -55,7 +55,7 @@
                                     <label for="username" class="col-sm-3 col-form-label">Username <span
                                             style="color: red;"> * </span> </label>
                                     <div class="col-sm-9">
-                                        <input type="password" class="form-control" id="username"
+                                        <input type="text" class="form-control" id="username" name="username"
                                             style="background-color:  #EFE6F6 ;">
                                     </div>
                                 </div>
@@ -63,21 +63,21 @@
                                     <label for="email" class="col-sm-3 col-form-label">Email <span style="color: red;"> *
                                         </span> </label>
                                     <div class="col-sm-9">
-                                        <input type="password" class="form-control" id="email"
+                                        <input type="email" class="form-control" id="email" name="email"
                                             style="background-color:  #EFE6F6 ;">
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                    <label for="noHp" class="col-sm-3 col-form-label">Nomor telepon <span
+                                    <label for="no_telp" class="col-sm-3 col-form-label">Nomor telepon <span
                                             style="color: red;"> * </span> </label>
                                     <div class="col-sm-9">
-                                        <input type="password" class="form-control" id="noHp"
+                                        <input type="text" class="form-control" id="no_telp" id="no_telp"
                                             style="background-color:  #EFE6F6 ;">
                                     </div>
                                 </div>
                             </div>
                             <br>
-                            <button type="button" class="btn" style="float: right; background-color : #CEB8DF;">Submit</button>
+                            <button type="submit" class="btn" style="float: right; background-color : #CEB8DF;">Submit</button>
                             </form>
                         </div>
                     </div>
@@ -87,8 +87,8 @@
                         <div class="card-body text-center">
                             <img src="profil.png" alt="avatar" class="rounded-circle img-fluid"
                                 style="width: 150px; background-image: url('background.png');">
-                            <h5 class="my-3"><b>John Smith </b></h5>
-                            <h5 class="my-3">+8801774286074</h5>
+                            <h5 class="my-3"><b>{{ Auth::user()->nama_user }} </b></h5>
+                            <h5 class="my-3">{{ Auth::user()->no_telp }}</h5>
                             <br>
                             <br>
                             <br>
@@ -96,10 +96,10 @@
                                 <div class="card">
                                     <div class="w-50 p-2">
                                         <div style="float: left" class="p-1">
-                                            <img src="nama.png" />
+                                            <i class="fa-regular fa-user"></i>
                                         </div>
-                                        <p class="text-muted mb-1" style="text-align: left"><b>Nama</b></p>
-                                        <p class="text-muted mb-1" style="text-align: left">Andreas Iniesta Susima</p>
+                                            <p class="text-muted mb-1" style="text-align: left"><b>Nama</b></p>
+                                            <p class="text-muted mb-1" style="text-align: left">{{ Auth::user()->nama_user }}</p>
                                     </div>
                                 </div>
                                 <br>
@@ -108,10 +108,10 @@
                                 <div class="card">
                                     <div class="w-50 p-2">
                                         <div style="float: left" class="p-1">
-                                            <img src="email.png" />
+                                        <i class="far fa-envelope-open"></i>
                                         </div>
                                         <p class="text-muted mb-1" style="text-align: left"><b>Email</b></p>
-                                        <p class="text-muted mb-1" style="text-align: left">2359823659@mhs.its.ac.id</p>
+                                        <p class="text-muted mb-1" style="text-align: left">{{ Auth::user()->email }}</p>
                                     </div>
                                 </div>
                             </div>

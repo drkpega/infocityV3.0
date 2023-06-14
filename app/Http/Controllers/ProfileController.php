@@ -31,4 +31,6 @@ class ProfileController extends Controller
         $user = auth()->id();
         $profil = User::where('user_id', $user)->get();
     }
+
+
 }

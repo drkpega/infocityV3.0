@@ -53,12 +53,6 @@ class User extends Authenticatable
      * @param  string  $value
      * @return \Illuminate\Database\Eloquent\Casts\Attribute
      */
-    protected function kode_user(): Attribute
-    {
-        return new Attribute(
-            get: fn($value) => ["user", "admin", "manager"][$value]
-        );
-    }
 
     public function favorite()
     {
