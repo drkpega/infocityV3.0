@@ -21,7 +21,7 @@
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="/login">{{ __('Login') }}</a>
                         </li>
                     @endif
 
@@ -32,16 +32,13 @@
                     @endif
                 @else
                     <li class="nav-item">
-                        <a href="{{ route('logout') }}"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </a>
-                        <a href="{{ route('logout') }}"><i class="fas fa-user"></i></a>
-                        <a href="{{ route('logout') }}"><i class="fas fa-heart"></i></i></a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
+                        <a href="{{ route('logout') }}"><i class="fa-solid fa-right-from-bracket mx-1"></i></a>
+                        @if (Auth::user()->kode_user == 0)
+                        <a href="/user/profile/{{ Auth::user()->id }}"><i class="fa-regular fa-user mx-1"></i></a>
+                        @else
+                        <a href="/admin/profile/{{ Auth::user()->id }}"><i class="fa-regular fa-user mx-1"></i></a>
+                        @endif
+                        <a href=""><i class="fa-regular fa-bookmark mx-1"></i></a>
                     </li>
                 @endguest
             </ul>

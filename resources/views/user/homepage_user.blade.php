@@ -4,8 +4,8 @@
 
 @section('content')
 
-    <h4 style="width:100%; padding:0px 0px 0px 20px; font-weight:1000;">Hai, Jojo!</h4> {{-- nama ambil dari database --}}
-    <h4 style="text-decoration:underline; width:100%; padding-left:20px;">Lengkapi profilmu dulu yuk!</h4>
+    <h4 style="width:100%; padding:0px 0px 0px 20px; font-weight:1000;">Hai, {{ Auth::user()->nama_user }}!</h4> {{-- nama ambil dari database --}}
+    {{-- <h4 style="text-decoration:underline; width:100%; padding-left:20px;">Lengkapi profilmu dulu yuk!</h4> --}}
 
     <div class="all-kegiatan">
         <div class="kegiatan">

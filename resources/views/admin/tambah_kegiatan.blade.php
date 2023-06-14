@@ -6,12 +6,13 @@
 
     <h3>Form Informasi Kegiatan</h3>
 
+<form action="/postingan/store" method="POST" enctype="multipart/form-data">
+    {{ csrf_field() }}
     <div class="detail-kegiatan-edit">
-        <center><img src="./image/poster.png" alt="/poster"></center>
+
+        <!-- <center><img src="./image/poster.png" alt="/poster"></center> -->
         <br>
-        <form action="{{route ('store')}}" method="POST" enctype="multipart/form-data">
-            {{-- <form method="POST" enctype="multipart/form-data"> --}}
-        @csrf
+
             <div class="row">
                 <label for="inputNamaKegiatan" class="col-sm-3 col-form-label">Nama Kegiatan</label>
                 <div class="col-sm-6">
@@ -87,12 +88,12 @@
                 <label for="poster" class="col-sm-3 col-form-label">Poster Kegiatan</label>
                 <div class="col-sm-6">
                     <h4>:</h4>
-                    <input type="file" class="form-control" placeholder="Masukkan Gambar" id="poster" style="height: 100px" name="poster_postingan">
+                    <input type="file" class="" placeholder="Masukkan Gambar" id="poster" style="height: 100px" name="poster_postingan">
                 </div>
             </div>
 
                 <center><button class="btn btn-success" type="submit">Upload</button></center>
-        </form>
-    </div>
 
+    </div>
+</form>
 @endsection

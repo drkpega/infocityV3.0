@@ -14,7 +14,7 @@ body {
 }
 
 /*navbar */
-.navbar{
+.navbar {
     margin-bottom: 30px;
 }
 
@@ -86,11 +86,10 @@ form .col-sm-6 h4 {
 .detail-kegiatan-edit .btn {
     margin-top: 10px;
     width: fit-content;
-
 }
 
 /*homepage_admin*/
-.etalase-postingan{
+.etalase-postingan {
     display: grid;
     grid-template-columns: repeat(
         4, 1fr
@@ -194,7 +193,8 @@ form .col-sm-6 h4 {
 .pelaksana .pelaksana-detail {
     margin-right: 10px;
 }
-.to-edit, .to-delete {
+.to-edit,
+.to-delete {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -538,3 +538,53 @@ page :disimpan1/ .etalase-postingan {
 .box form {
     width: 80%;
 } */
+
+/* image input */
+
+.drag-area {
+    border: 2px dashed #fff;
+    height: 500px;
+    width: 700px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.drag-area.active {
+    border: 2px solid #fff;
+}
+.drag-area .icon {
+    font-size: 100px;
+    color: #fff;
+}
+.drag-area header {
+    font-size: 30px;
+    font-weight: 500;
+    color: #fff;
+}
+.drag-area span {
+    font-size: 25px;
+    font-weight: 500;
+    color: #fff;
+    margin: 10px 0 15px 0;
+}
+.drag-area button {
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    background: #fff;
+    color: #5256ad;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.drag-area img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* end image input */
