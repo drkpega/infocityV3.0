@@ -15,10 +15,10 @@
 </div>
 
 <div class="etalase-postingan">
-    @foreach($users->kegiatan as $k)
+    @foreach($fav as $f)
     <div class="card">
-        <img src="/images/kegiatan/{{$k->poster_postingan}}" alt="/poster1">
-        <h5>{{$k->nama_kegiatan}}</h5>
+        <img src="/images/kegiatan/{{$f->poster_postingan}}" alt="/poster1">
+        <h5>{{$f->nama_kegiatan}}</h5>
         <button x-show="open" type="button" class="btn btn-danger">X Hapus</button>
     </div>
     @endforeach

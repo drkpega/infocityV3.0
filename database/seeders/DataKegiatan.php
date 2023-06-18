@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Kegiatan;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DataKegiatan extends Seeder
 {
@@ -13,29 +14,53 @@ class DataKegiatan extends Seeder
      */
     public function run(): void
     {
-        Kegiatan::table('kegiatans')->insert([
+        DB::table('kegiatans')->insert([
             'nama_kegiatan' => 'Lomba Essay',
-            'poster_postingan' => 'lombaessay.png',
-            'jenis_kegiatan' => 'Lomba',
+            'poster_postingan' => 'lombaessay.jpg',
+            'jenis_kegiatan' => '2',
             'tanggal' => '2023-06-15',
             'lokasi' => 'DSI ITS',
-            'caption' => '[KUESIONER #3] Halo teman-teman (), kami dari Fundraising ingin meminta bantuan kalian untuk mengisi kuesioner sebagai berikut: JADWAL PENGISIAN: SELASA, 27 SEPTEMBER 2022 18.00 - RABU, 28 SEPTEMBER 2022 PUKUL 18.00.00 WIB 1. Mengisi kuesioner pada link yang telah tersedia https://intip.in/SurveyPenggunaMedsos 2. Upload bukti SS apabila telah mengisi form ke link: https://forms.gle/Rp4EbhRBjVwf2VtTA Diisi yaa jangan sampai kena denda. Terima kasih😊',
+            'caption' => 'JADWAL PENGISIAN: SELASA, 27 SEPTEMBER 2022 18.00 - RABU, 28 SEPTEMBER 2022 PUKUL 18.00.00 WIBTerima kasih',
             'ig_pelaksana' => '@lomba_essay',
             'email_pelaksana' => 'lombaessay@gmail.com',
             'link_pendaftaran' => 'www.google.com',
             'benefit' => 'Dapat pahala'
         ]);
-        Kegiatan::table('kegiatans')->insert([
-            'nama_kegiatan' => 'Lomba Baca',
-            'poster_postingan' => 'lombabaca.png',
-            'jenis_kegiatan' => 'Lomba',
+        DB::table('kegiatans')->insert([
+            'nama_kegiatan' => 'Beasiswa KIP-K',
+            'poster_postingan' => 'beasiswa1.jpg',
+            'jenis_kegiatan' => '1',
             'tanggal' => '2023-06-15',
-            'lokasi' => 'DSI ITS',
-            'caption' => '[KUESIONER #3] Halo teman-teman (), kami dari Fundraising ingin meminta bantuan kalian untuk mengisi kuesioner sebagai berikut: JADWAL PENGISIAN: SELASA, 27 SEPTEMBER 2022 18.00 - RABU, 28 SEPTEMBER 2022 PUKUL 18.00.00 WIB 1. Mengisi kuesioner pada link yang telah tersedia https://intip.in/SurveyPenggunaMedsos 2. Upload bukti SS apabila telah mengisi form ke link: https://forms.gle/Rp4EbhRBjVwf2VtTA Diisi yaa jangan sampai kena denda. Terima kasih😊',
-            'ig_pelaksana' => '@lomba_essay',
-            'email_pelaksana' => 'lombaessay@gmail.com',
-            'link_pendaftaran' => 'www.google.com',
-            'benefit' => 'Dapat pahala'
+            'lokasi' => 'Online',
+            'caption' => 'JADWAL PENGISIAN: SELASA, 27 SEPTEMBER 2022 18.00 - RABU, 28 SEPTEMBER 2022 PUKUL 18.00.00 WIBTerima kasih',
+            'ig_pelaksana' => '@kemendikbud',
+            'email_pelaksana' => 'kemendikbud@gmail.com',
+            'link_pendaftaran' => 'intip.in/adhebdkjdbascb',
+            'benefit' => 'Dapat Uang 500jt'
+        ]);
+        DB::table('kegiatans')->insert([
+            'nama_kegiatan' => 'Volunteer Teman Bicara',
+            'poster_postingan' => 'volunteer1.jpg',
+            'jenis_kegiatan' => '4',
+            'tanggal' => '2023-06-17',
+            'lokasi' => 'Surabaya',
+            'caption' => 'JADWAL PENGISIAN: SELASA, 27 SEPTEMBER 2022 18.00 - RABU, 28 SEPTEMBER 2022 PUKUL 18.00.00 WIBTerima kasih',
+            'ig_pelaksana' => '@temanbicaraa',
+            'email_pelaksana' => 'temanbicara@gmail.com',
+            'link_pendaftaran' => 'intip.in/temanbicara',
+            'benefit' => 'Sertifikat'
+        ]);
+        DB::table('kegiatans')->insert([
+            'nama_kegiatan' => 'Webinar start up',
+            'poster_postingan' => 'webinar1.jpg',
+            'jenis_kegiatan' => '3',
+            'tanggal' => '2023-06-19',
+            'lokasi' => 'Online',
+            'caption' => 'JADWAL PENGISIAN: SELASA, 27 SEPTEMBER 2022 18.00 - RABU, 28 SEPTEMBER 2022 PUKUL 18.00.00 WIBTerima kasih',
+            'ig_pelaksana' => '@webinarsu_',
+            'email_pelaksana' => 'webinarsu@gmail.com',
+            'link_pendaftaran' => 'intip.in/websu',
+            'benefit' => 'Uang jajan'
         ]);
     }
 }

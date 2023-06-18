@@ -14,7 +14,8 @@ return new class extends Migration {
             $table->id();
             $table->string('nama_kegiatan');
             $table->string('poster_postingan');
-            $table->string('jenis_kegiatan');
+            $table->Integer('jenis_kegiatan');
+            // 1= Beasiswa, 2=Lomba, 3=Event, 4=Volunteer
             $table->string('tanggal');
             $table->text('lokasi');
             $table->string('caption');

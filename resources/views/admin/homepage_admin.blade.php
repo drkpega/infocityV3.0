@@ -19,7 +19,7 @@
                         @foreach ($lomba as $l)
                             <div class="carousel-item">
                                 <a href="/postingan/detail/{{ $l->id }}"><img src="/images/kegiatan/{{ $l->poster_postingan }}" class="d-block w-100"
-                                    alt="/{{ $l->posterpostingan }}"></a>
+                                    alt="/{{ $l->poster_postingan }}"></a>
                             </div>
                         @endforeach
                     </div>

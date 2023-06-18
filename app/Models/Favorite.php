@@ -16,5 +16,5 @@ class Favorite extends Model
     protected $fillable = [
     ];
 
-    protected $table = "favorite";
+    protected $table = "favorites";
 }
