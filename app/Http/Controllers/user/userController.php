@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Kegiatan;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class userController extends Controller
 {
@@ -29,12 +30,12 @@ class userController extends Controller
         $event = kegiatan::where('jenis_kegiatan', '3')->get();
         $lomba = kegiatan::where('jenis_kegiatan', '2')->get();
         $volunteer = kegiatan::where('jenis_kegiatan', '4')->get();
-    return view('user.homepage_user', [
-        'beasiswa' => $beasiswa,
-        'event' => $event,
-        'lomba' => $lomba,
-        'volunteer' => $volunteer
-    ]);
+        return view('user.homepage_user', [
+            'beasiswa' => $beasiswa,
+            'event' => $event,
+            'lomba' => $lomba,
+            'volunteer' => $volunteer
+        ]);
     }
 
     // Lomba
@@ -81,7 +82,7 @@ class userController extends Controller
         $search = $request->search;
 
         $kegiatan = DB::table('kegiatan')
-            ->where('nama_kegiatan', 'like',"%". $search . "%")->get();
+            ->where('nama_kegiatan', 'like', "%" . $search . "%")->get();
 
         return view('cari', ['kegiatan' => $kegiatan]);
 
@@ -91,8 +92,8 @@ class userController extends Controller
     public function profile($id)
     {
         $user = User::where('id', $id);
-        $data = Favorite::where('Favorites.user_id', $id)->join('kegiatans', 'kegiatans.id', '=', 'favorites.kegiatan_id')
-        ->get();
+        $data = Favorite::where('Favorites.user_id', $id)->join('kegiatans', 'kegiatans.id', '=', 'favorites.kegiatan_id')->join('users', 'users.id', '=', "favorites.user_id")
+            ->get();
 
         return view('user.profile_user', ['user' => $data]);
     }
@@ -100,23 +101,25 @@ class userController extends Controller
     public function profile_update($id, Request $request)
     {
         $request->validate([
-            'nama_user' => 'required|string|min:6|confirmed',
+            'nama_user' => 'required',
             'username' => 'required',
             'email' => 'required',
-            'no_telp' => 'required',
-            'profile' => 'required'
         ]);
-
-        $profile_pict = $request->file('profile');
-        $image_upload = 'images/profile';
-        $profile_pict->move($image_upload, $profile_pict->getClientOriginalName());
 
         $user = User::find($id);
         $user->nama_user = $request->nama_user;
         $user->username = $request->username;
-        $user->email = $request->email;
-        $user->no_telp = $request->no_telp;
-        $user->profile_image = $request->profile_pict;
+        $user->save();
+        return redirect()->back();
+    }
+    public function password_reset($id, Request $request)
+    {
+        $request->validate([
+            'password' => 'required|confirmed',
+        ]);
+
+        $user = User::find($id);
+        $user->password = Hash::make($request->password);
         $user->save();
         return redirect()->back();
     }

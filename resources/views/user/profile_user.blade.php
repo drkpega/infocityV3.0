@@ -10,8 +10,9 @@
                 <div class="col-lg-8">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <form action="/password/reset" method="POST">
-                                {{ csrf_field() }}
+                            <form action="/password/reset/{{ Auth::user()->id }}" method="POST">
+                            {{ csrf_field() }}
+                            {{ method_field('PUT') }}
                                 <h4>
                                     <center> <b>Ganti Password</b></center>
                                 </h4>
@@ -39,7 +40,9 @@
                             </form>
                         </div>
                         <div class="card-body">
-                            <form action="/user/profile/update" method="POST">
+                            <form action="/user/profile/update/{{ Auth::user()->id }}" method="POST">
+                            {{ csrf_field() }}
+                            {{ method_field('PUT') }}
                                 <h4>
                                     <center> <b>Update Profil Anda</b></center>
                                 </h4>

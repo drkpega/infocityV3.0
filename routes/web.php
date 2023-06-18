@@ -40,6 +40,8 @@ Route::controller(userController::class)->group(function () {
     // profile
     Route::get('/user/profile/{id}', 'profile');
     Route::put('/user/profile/update/{id}', 'profile_update');
+    Route::put('/user/password/reset/{id}', 'password_reset');
+
     // detail view postingan
     Route::get('/user/postingan/detail/{id}', 'detail');
     // controller postingan kategori
