@@ -16,7 +16,7 @@
 
 <div class="etalase-postingan">
     @foreach($fav as $f)
-    <div class="card">
+    <div class="card-1">
         <img src="/images/kegiatan/{{$f->poster_postingan}}" alt="/poster1">
         <h5>{{$f->nama_kegiatan}}</h5>
         <button x-show="open" type="button" class="btn btn-danger">X Hapus</button>

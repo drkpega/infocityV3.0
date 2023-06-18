@@ -7,15 +7,33 @@
     <h3>{{ $kegiatan->nama_kegiatan }}</h3>
 
     <div class="to-edit">
-        <a href="/postingan/edit/{{$kegiatan->id}}" type="button" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+        <a href="/postingan/edit/{{ $kegiatan->id }}" type="button" class="btn btn-success"><i
+                class="fa-solid fa-pen-to-square"></i> Edit</a>
     </div>
 
     <div class="detail-kegiatan">
-        <center><img src="/images/kegiatan/{{$kegiatan -> poster_postingan}}" alt="/poster"></center>
+        <center><img src="/images/kegiatan/{{ $kegiatan->poster_postingan }}" alt="/poster"></center>
         <br>
         <div class="icon">
             <i class="fas fa-heart"></i>
-            <i class="far fa-clone"></i>
+            <input type="text" value="{{ $kegiatan->link_pendaftaran }}" id="copyText"
+                style="position: absolute; left: -9999px;">
+            <button id="copyBtn" style="border: none; background-color:white;"><i class="far fa-clone"></i></button>
+            <script>
+                const copyBtn = document.getElementById('copyBtn')
+                const copyText = document.getElementById('copyText')
+
+                copyBtn.onclick = () => {
+                    copyText.select(); // Selects the text inside the input
+                    document.execCommand('copy'); // Simply copies the selected text to clipboard
+                    Swal.fire({ //displays a pop up with sweetalert
+                        icon: 'success',
+                        title: 'Link Pendaftaran Berhasil Disalin',
+                        showConfirmButton: false,
+                        timer: 1000
+                    });
+                }
+            </script>
         </div>
         <hr>
         <div class="tempat-tanggal">
@@ -32,21 +50,29 @@
         <br>
         <div class="benefit">
             <h5>Benefit</h5>
-            <p>{{$kegiatan->benefit}}</p>
+            <p>{{ $kegiatan->benefit }}</p>
         </div>
         <hr>
         <div class="pelaksana">
-            <img src="/images/kegiatan/{{$kegiatan -> poster_postingan}}" alt="/poster">
             <div class="pelaksana-detail">
-                <h5>{{$kegiatan->ig_pelaksana}}</h5>
-                <!--nama pelaksana-->
-                <h6>{{$kegiatan->email_pelaksana}}</h6>
-                <!--email pelaksana-->
+                <h5 style="text-decoration: underline">Pelaksana Kegiatan: </h5>
+                <table>
+                    <tr>
+                      <th>Instagram</th>
+                      <td>:  {{ $kegiatan->ig_pelaksana }}</td>
+                      <!-- Tambahkan kolom tambahan untuk data selanjutnya -->
+                    </tr>
+                    <tr>
+                      <th>Email</th>
+                      <td>:  {{ $kegiatan->email_pelaksana }}</td>
+                      <!-- Tambahkan kolom tambahan untuk data selanjutnya -->
+                    </tr>
+                  </table>
             </div>
         </div>
         <br>
-        <h5>Detail Event</h5>
-        <p>{{$kegiatan->caption}}</p>
+        <h5 style="text-decoration: underline">Detail Event</h5>
+        <p>{{ $kegiatan->caption }}</p>
         <br>
     </div>
 

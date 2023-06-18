@@ -22,20 +22,19 @@ class adminController extends Controller
     }
     public function index()
     {
-        //get posts
-        // $kegiatan = kegiatan::where('jenis_kegiatan', 'Lomba')->get();
-        // $kegiatan = kegiatan::all();
+        //$beasiswa = kegiatan::where('jenis_kegiatan', '1')->get();
         $beasiswa = kegiatan::where('jenis_kegiatan', '1')->get();
         $event = kegiatan::where('jenis_kegiatan', '2')->get();
         $lomba = kegiatan::where('jenis_kegiatan', '3')->get();
-        $volunteer = kegiatan::where('jenis_kegiatan', '3')->get();
-        // mengirim data pegawai ke view pegawai
-        return view('admin.homepage_admin', [
-            'beasiswa' => $beasiswa,
-            'event' => $event,
-            'lomba' => $lomba,
-            'volunteer' => $volunteer
-        ]);
+        $volunteer = kegiatan::where('jenis_kegiatan', '4')->get();
+    // mengirim data pegawai ke view pegawai
+     return view('admin.homepage_admin', [
+        'beasiswa' => $beasiswa,
+        'event' => $event,
+        'lomba' => $lomba,
+        'volunteer' => $volunteer
+     ]);
+
     }
 
     // Lomba
@@ -78,11 +77,10 @@ class adminController extends Controller
 
         // mengambil data dari table pegawai sesuai pencarian data
         $kegiatan = DB::table('kegiatan')
-            ->where('nama_kegiatan', 'like', "%" . $search . "%")
-            ->paginate();
+            ->where('nama_kegiatan', 'like',"%". $search . "%")->get();
 
         // mengirim data pegawai ke view index
-        return view('admin.homepage_admin', ['kegiatan' => $kegiatan]);
+        return view('cari', ['kegiatan' => $kegiatan]);
 
     }
 }

@@ -85,6 +85,7 @@ Route::controller(PostinganController::class)->group(function () {
     // delete postingan
     Route::get('/postingan/hapus/{id}', 'delete');
     Route::get('/postingan/{id}', 'delete');
+
 });
 
 
