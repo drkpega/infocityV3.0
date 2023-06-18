@@ -54,8 +54,8 @@ class User extends Authenticatable
      * @return \Illuminate\Database\Eloquent\Casts\Attribute
      */
 
-    public function favorite()
+    public function kegiatan()
     {
-        return $this->hasOne('App\Models\Favorite', 'id_user');
+        return $this->belongsToMany(Kegiatan::class, 'favorites', 'kegiatan_id', 'user_id');
     }
 }

@@ -9,7 +9,7 @@ class Kegiatan extends Model
 {
     use HasFactory;
 
-    protected $table = "kegiatan";
+    protected $table = "kegiatans";
 
     /**
      * fillable
@@ -28,4 +28,9 @@ class Kegiatan extends Model
         'link_pendaftaran',
         'benefit',
     ];
+
+    public function user()
+    {
+        return $this->belongsToMany(User::class, 'favorites', 'user_id', 'kegiatan_id');
+    }
 }

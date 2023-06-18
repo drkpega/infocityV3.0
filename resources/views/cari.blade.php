@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Lomba')
+@section('title', 'Search')
 
 @section('content')
     <div x-data="{open: false}">
-        <h3>Lomba</h3>
+        <h3>Halaman Pencarian</h3>
 
             <div class="etalase-postingan">
                 @foreach($kegiatan as $k)
