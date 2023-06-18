@@ -4,57 +4,62 @@
 
 @section('content')
 
-     <h3>Lomba</h3> {{-- ambil nama kegiatan dari database --}}
+    <h3>{{ $kegiatan->nama_kegiatan }}</h3>
+
     <div class="detail-kegiatan">
-        <center><img src="/image/poster.png" alt="/poster"></center>
+        <center><img src="/images/kegiatan/{{ $kegiatan->poster_postingan }}" alt="/poster"></center>
         <br>
         <div class="icon">
             <i class="fas fa-heart"></i>
-            <i class="far fa-clone"></i>
+            <input type="text" value="{{ $kegiatan->link_pendaftaran }}" id="copyText"
+                style="position: absolute; left: -9999px;">
+            <button id="copyBtn" style="border: none; background-color:white;"><i class="far fa-clone"></i></button>
+            <script>
+                const copyBtn = document.getElementById('copyBtn')
+                const copyText = document.getElementById('copyText')
+
+                copyBtn.onclick = () => {
+                    copyText.select(); // Selects the text inside the input
+                    document.execCommand('copy'); // Simply copies the selected text to clipboard
+                    Swal.fire({ //displays a pop up with sweetalert
+                        icon: 'success',
+                        title: 'Link Pendaftaran Berhasil Disalin',
+                        showConfirmButton: false,
+                        timer: 1000
+                    });
+                }
+            </script>
         </div>
         <hr>
         <div class="tempat-tanggal">
             <div class="tanggal">
                 <i class="far fa-calendar-alt"></i>
-                <h6>Senin, 23 Januari 2022</h6>
+                <h6> {{ $kegiatan->tanggal }}</h6>
             </div>
             <div class="tempat">
-                <i class="fas fa-map-marker-alt" style="color: #ff0000;"></i>
-                <a href="/linkzoom-atau-mapslokasi" style="font-size: 20px">Zoom</a>
+                <i class="fas fa-map-marker-alt" style="color: #f41010;"></i>
+                {{-- <a href="/linkzoom-atau-mapslokasi" style="font-size: 20px">lokasi</a> --}}
+                <a href="/linkzoom-atau-mapslokasi" style="font-size: 20px">{{ $kegiatan->lokasi }}</a>
             </div>
         </div>
         <br>
         <div class="benefit">
             <h5>Benefit</h5>
-            <p>Sertifikat, Hadiah, Thropy, Relasi</p>
+            <p>{{ $kegiatan->benefit }}</p>
         </div>
         <hr>
         <div class="pelaksana">
-            <img src="./image/himtifunpam.jpg" alt="/pelaksanalogo">
             <div class="pelaksana-detail">
-                <h5>himtif_unpam</h5>
+                <h5>{{ $kegiatan->ig_pelaksana }}</h5>
                 <!--nama pelaksana-->
-                <h6>himtif.unpam042016@gmail.com</h6>
+                <h6>{{ $kegiatan->email_pelaksana }}</h6>
                 <!--email pelaksana-->
             </div>
         </div>
         <br>
         <h5>Detail Event</h5>
-        <p>
-            [KUESIONER #3]
-            Halo teman-teman (), kami dari Fundraising ingin meminta bantuan kalian untuk mengisi kuesioner sebagai
-            berikut:
-            JADWAL PENGISIAN:
-            SELASA, 27 SEPTEMBER 2022 18.00 - RABU, 28 SEPTEMBER 2022 PUKUL 18.00.00 WIB
-            1. Mengisi kuesioner pada link yang telah tersedia
-            https://intip.in/SurveyPenggunaMedsos
-            2. Upload bukti SS apabila telah mengisi form ke link:
-            https://forms.gle/Rp4EbhRBjVwf2VtTA
-            Diisi yaa jangan sampai kena denda. Terima kasih😊
-        </p>
+        <p>{{ $kegiatan->caption }}</p>
         <br>
-        <center><button type="button" class="btn btn-success">DAFTAR LOMBA</button></center>
     </div>
-
 
 @endsection

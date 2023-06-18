@@ -22,7 +22,7 @@
                     @foreach ($lomba as $l)
                         <div class="carousel-item">
                             <a href="/postingan/detail/{{ $l->id }}"><img src="/images/kegiatan/{{ $l->poster_postingan }}" class="d-block w-100"
-                                alt="/{{ $l->posterpostingan }}"></a>
+                                alt="/{{ $l->poster_postingan }}"></a>
                         </div>
                     @endforeach
                 </div>
@@ -53,8 +53,8 @@
                     </div>
                     @foreach ($beasiswa as $b)
                         <div class="carousel-item">
-                            <a href="/postingan/detail/{{ $b->id }}"><img src="/images/kegiatan/{{ $b->posterpostingan }}" class="d-block w-100"
-                                alt="/{{ $b->posterpostingan }}"></a>
+                            <a href="/postingan/detail/{{ $b->id }}"><img src="/images/kegiatan/{{ $b->poster_postingan }}" class="d-block w-100"
+                                alt="/{{ $b->poster_postingan }}"></a>
                         </div>
                     @endforeach
                 </div>
@@ -84,8 +84,8 @@
                     </div>
                     @foreach ($volunteer as $v)
                         <div class="carousel-item">
-                            <a href="/postingan/detail/{{ $v->id }}"><img src="/images/kegiatan/{{ $v->posterpostingan }}" class="d-block w-100"
-                                alt="/{{ $v->posterpostingan }}"></a>
+                            <a href="/postingan/detail/{{ $v->id }}"><img src="/images/kegiatan/{{ $v->poster_postingan }}" class="d-block w-100"
+                                alt="/{{ $v->poster_postingan }}"></a>
                         </div>
                     @endforeach
                 </div>
@@ -115,8 +115,8 @@
                     </div>
                     @foreach ($event as $e)
                         <div class="carousel-item">
-                            <a href="/postingan/detail/{{ $e->id }}"><img src="/images/kegiatan/{{ $e->posterpostingan }}" class="d-block w-100"
-                                alt="/{{ $e->posterpostingan }}"></a>
+                            <a href="/postingan/detail/{{ $e->id }}"><img src="/images/kegiatan/{{ $e->poster_postingan }}" class="d-block w-100"
+                                alt="/{{ $e->poster_postingan }}"></a>
                         </div>
                     @endforeach
                 </div>

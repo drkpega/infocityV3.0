@@ -76,6 +76,7 @@ Route::controller(adminController::class)->group(function () {
     Route::get('/admin/event', 'kegiatan_event');
     Route::get('/admin/beasiswa', 'kegiatan_beasiswa');
     Route::get('/admin/volunteer', 'kegiatan_volunteer');
+    Route::get('/admin/homepage', 'index');
 });
 
 
