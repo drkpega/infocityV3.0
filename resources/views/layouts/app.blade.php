@@ -10,7 +10,7 @@
     <title>
         @yield('title')
     </title>
-    <link rel="icon" href="/images/infocitylogo.png" type="image/png">
+    <link rel="icon" href="/infocitylogo.png" type="image/png">
 
         <!-- Latest compiled and minified CSS -->
         {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"> --}}

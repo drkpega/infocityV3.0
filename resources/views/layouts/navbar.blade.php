@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="/images/infocitynavbarlogo.png" alt="/logoinfocity">
+            <img src="/infocitynavbarlogo.png" alt="/logoinfocity">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,7 +10,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav m-auto " style="width:70%">
-                <form class="d-flex" role="search" action="/postingan/search" method="GET" style="width:100%">
+                <form class="d-flex" role="search" action="/postingan/search" method="GET" style="width:100%" enctype="multipart/form-data">
                     <input class="form-control me-2 mr-2" name="search" type="text" placeholder="Mau cari info apa?"
                         value="{{ old('search') }}">
                     <input class="btn btn-primary" type="submit" value="SEARCH">
@@ -60,10 +60,11 @@
                         </script>
                         @if (Auth::user()->kode_user == 0)
                             <a href="/user/profile/{{ Auth::user()->id }}"><i class="fa-regular fa-user mx-1"></i></a>
+                            <a href="/user/favorite/{{ Auth::user()->id }}"><i class="fa-regular fa-bookmark mx-1"></i></a>
                         @else
-                            <a href="/admin/profile/{{ Auth::user()->id }}"><i class="fa-regular fa-user mx-1"></i></a>
+
                         @endif
-                        <a href="/user/favorite/{{ Auth::user()->id }}"><i class="fa-regular fa-bookmark mx-1"></i></a>
+
                     </li>
                 @endguest
             </ul>

@@ -12,12 +12,12 @@
                         @csrf
 
                         <h1 style="text-align: center; md-3">Buat Akun</h1>
-                        <div class=" mb-4">
-                            <h3>Sudah Punya akun?
+                        <div class="d-flex justify-content-center">
+                            <h5>Sudah Punya akun?
                                 <a href="#" style="color:#047810">
                                     Masuk
                                 </a>
-                            </h3>
+                            </h5>
                         </div>
 
                         <div class="mb-3">
@@ -28,6 +28,16 @@
                                     id="email" name="email" value="{{ old('email') }}">
                                 @if ($errors->has('email'))
                                     <span class="text-danger">{{ $errors->first('email') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="username" class="col-md-4 col-form-label text-md-end text-start">Username</label>
+                            <div class="col-md-12">
+                                <input type="username" class="form-control @error('username') is-invalid @enderror"
+                                    id="username" name="username" value="{{ old('username') }}">
+                                @if ($errors->has('username'))
+                                    <span class="text-danger">{{ $errors->first('username') }}</span>
                                 @endif
                             </div>
                         </div>

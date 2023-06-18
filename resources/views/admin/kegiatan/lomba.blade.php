@@ -21,7 +21,30 @@
 
                     <a href="/postingan/detail/{{ $k->id }}"><img src="/images/kegiatan/{{$k -> poster_postingan}}" alt="/poster1"></a>
                     <h5>{{ $k->nama_kegiatan }}</h5>
-                    <a href="/postingan/hapus/{{ $k->id }}" onclick="return confirm('Are you sure?')"><button  x-show="open" type="button" class="btn btn-danger">X Hapus</button></a>
+
+                    <a href="{{ url('/postingan/hapus/'.$k->id) }}" id="deleteLink{{ $k->id }}" onclick="return confirmDelete(event, '{{ $k->id }}')">
+                        <button x-show="open" type="button" class="btn btn-danger">X Hapus</button>
+                    </a>
+
+                    <script>
+                        function confirmDelete(event, id) {
+                            event.preventDefault();
+
+                            Swal.fire({
+                                title: 'Konfirmasi Hapus',
+                                text: 'Apakah Anda yakin ingin menghapus?',
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonText: 'Ya',
+                                cancelButtonText: 'Tidak',
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    const deleteLink = document.getElementById('deleteLink' + id);
+                                    window.location.href = deleteLink.href;
+                                }
+                            });
+                        }
+                    </script>
                 </div>
                 @endforeach
             </div>

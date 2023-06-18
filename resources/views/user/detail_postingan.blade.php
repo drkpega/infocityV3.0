@@ -11,7 +11,7 @@
         <br>
         <div class="icon">
             <i class="fas fa-heart"></i>
-            <input type="text" value="{{ $kegiatan->link_pendaftaran }}" id="copyText"
+            <input type="text" value="{{ url('user/postingan/detail/' . $kegiatan->id) }}" id="copyText"
                 style="position: absolute; left: -9999px;">
             <button id="copyBtn" style="border: none; background-color:white;"><i class="far fa-clone"></i></button>
             <script>
@@ -60,6 +60,9 @@
         <h5>Detail Event</h5>
         <p>{{ $kegiatan->caption }}</p>
         <br>
+
+        <center><a href="https://{{$kegiatan->link_pendaftaran}}"><button class="btn btn-success">Daftar</button></a></center>
+
     </div>
 
 @endsection

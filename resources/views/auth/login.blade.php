@@ -11,9 +11,6 @@
                     <form action="{{ route('authenticate') }}" method="post">
                         @csrf
 
-                        <a href="#">
-                            <img style="float:right; mb-4" src="/public/images/x.png" alt="/x">
-                        </a>
                         <h1 style="text-align: center; md-3">Login</h1>
 
                         <div class="mb-4">

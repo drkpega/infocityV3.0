@@ -16,9 +16,12 @@ class favoriteController extends Controller
     public function index($id)
     {
 
-        $favorites = Favorite::where('user_id', $id)->get('kegiatan_id');
+        $data = Favorite::where('Favorites.user_id', $id)->join('kegiatans', 'kegiatans.id', '=', 'favorites.kegiatan_id')
+            ->get();
 
+        return view('user.favorite', ['fav' => $data]);
+    }
 
-        return view('user/favorite', ['fav' => $favorites]);
+    public function favorite($id){
     }
 }

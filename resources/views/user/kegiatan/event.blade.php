@@ -9,7 +9,7 @@
             <div class="etalase-postingan">
                 @foreach($kegiatan as $k)
                 <div class="card-1">
-                    <a href="/postingan/detail/{{ $k->id }}"><img src="/images/kegiatan/{{$k -> poster_postingan}}" alt="/poster1"></a>
+                    <a href="/user/postingan/detail/{{ $k->id }}"><img src="/images/kegiatan/{{$k -> poster_postingan}}" alt="/poster1"></a>
                     <h5>{{ $k->nama_kegiatan }}</h5>
                 </div>
                 @endforeach

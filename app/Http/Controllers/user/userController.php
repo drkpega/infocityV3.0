@@ -24,15 +24,10 @@ class userController extends Controller
     }
     public function index()
     {
-        //get posts
-        // $kegiatan = kegiatan::where('jenis_kegiatan', 'Lomba')->get();
-        // $kegiatan = kegiatan::all();
         $beasiswa = kegiatan::where('jenis_kegiatan', '1')->get();
-        $event = kegiatan::where('jenis_kegiatan', '2')->get();
-        $lomba = kegiatan::where('jenis_kegiatan', '3')->get();
-
+        $event = kegiatan::where('jenis_kegiatan', '3')->get();
+        $lomba = kegiatan::where('jenis_kegiatan', '2')->get();
         $volunteer = kegiatan::where('jenis_kegiatan', '4')->get();
-    // mengirim data pegawai ke view pegawai
     return view('user.homepage_user', [
         'beasiswa' => $beasiswa,
         'event' => $event,
@@ -45,7 +40,7 @@ class userController extends Controller
     public function kegiatan_lomba()
     {
         //get posts
-        $kegiatan = kegiatan::where('jenis_kegiatan', '3')->get();
+        $kegiatan = kegiatan::where('jenis_kegiatan', '2')->get();
         return view('admin.kegiatan.lomba', ['kegiatan' => $kegiatan]);
     }
 
@@ -53,7 +48,7 @@ class userController extends Controller
     public function kegiatan_event()
     {
         //get posts
-        $kegiatan = kegiatan::where('jenis_kegiatan', '2')->get();
+        $kegiatan = kegiatan::where('jenis_kegiatan', '3')->get();
         return view('admin.kegiatan.event', ['kegiatan' => $kegiatan]);
     }
 

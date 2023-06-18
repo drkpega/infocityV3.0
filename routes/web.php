@@ -70,6 +70,7 @@ Route::controller(adminController::class)->group(function () {
     Route::get('/admin/event', 'kegiatan_event');
     Route::get('/admin/beasiswa', 'kegiatan_beasiswa');
     Route::get('/admin/volunteer', 'kegiatan_volunteer');
+    Route::get('/postingan/search', 'search');
 });
 
 Route::controller(PostinganController::class)->group(function () {
@@ -78,7 +79,6 @@ Route::controller(PostinganController::class)->group(function () {
     // detail view postingan
     Route::get('/postingan/detail/{id}', 'detail');
     // search
-    Route::get('/postingan/search', 'search');
     // edit postingan
     Route::get('/postingan/edit/{id}', 'edit');
     Route::put('/postingan/update/{id}', 'update');

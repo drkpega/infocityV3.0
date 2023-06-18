@@ -25,10 +25,9 @@ class PostinganController extends Controller
         // $kegiatan = kegiatan::where('jenis_kegiatan', 'Lomba')->get();
         // $kegiatan = kegiatan::all();
         $beasiswa = kegiatan::where('jenis_kegiatan', '1')->get();
-        $beasiswa = kegiatan::where('jenis_kegiatan', '1')->get();
-        $event = kegiatan::where('jenis_kegiatan', '2')->get();
-        $lomba = kegiatan::where('jenis_kegiatan', '3')->get();
-        $volunteer = kegiatan::where('jenis_kegiatan', '3')->get();
+        $event = kegiatan::where('jenis_kegiatan', '3')->get();
+        $lomba = kegiatan::where('jenis_kegiatan', '2')->get();
+        $volunteer = kegiatan::where('jenis_kegiatan', '4')->get();
         // mengirim data pegawai ke view pegawai
         return view('admin.homepage_admin', [
             'beasiswa' => $beasiswa,
@@ -39,31 +38,11 @@ class PostinganController extends Controller
 
     }
 
-    public function index2()
-    {
-        //get posts
-        // $kegiatan = kegiatan::where('jenis_kegiatan', 'Lomba')->get();
-        // $kegiatan = kegiatan::all();
-        $beasiswa = kegiatan::where('jenis_kegiatan', '1')->get();
-        $event = kegiatan::where('jenis_kegiatan', '2')->get();
-        $lomba = kegiatan::where('jenis_kegiatan', '3')->get();
-        $volunteer = kegiatan::where('jenis_kegiatan', '3')->get();
-        // mengirim data pegawai ke view pegawai
-        return view('user.homepage_user', [
-            'beasiswa' => $beasiswa,
-            'event' => $event,
-            'lomba' => $lomba,
-            'volunteer' => $volunteer
-        ]);
-
-    }
-
-
     // Lomba
     public function kegiatan_lomba()
     {
         //get posts
-        $kegiatan = kegiatan::where('jenis_kegiatan', '3')->get();
+        $kegiatan = kegiatan::where('jenis_kegiatan', '2')->get();
         return view('admin.kegiatan.lomba', ['kegiatan' => $kegiatan]);
     }
 
@@ -71,7 +50,7 @@ class PostinganController extends Controller
     public function kegiatan_event()
     {
         //get posts
-        $kegiatan = kegiatan::where('jenis_kegiatan', '2')->get();
+        $kegiatan = kegiatan::where('jenis_kegiatan', '3')->get();
         return view('admin.kegiatan.event', ['kegiatan' => $kegiatan]);
     }
 
@@ -142,26 +121,26 @@ class PostinganController extends Controller
     }
     public function update($id, Request $request)
     {
-        $request->validate([
-            'nama_kegiatan' => 'required',
-            'poster_postingan' => 'required',
-            'jenis_kegiatan' => 'required',
-            'tanggal' => 'required',
-            'lokasi' => 'required',
-            'caption' => 'required | max:255',
-            'ig_pelaksana' => 'required',
-            'email_pelaksana' => 'required',
-            'link_pendaftaran' => 'required',
-            'benefit' => 'required'
-        ]);
+        // $request->validate([
+        //     'nama_kegiatan' => 'required',
+        //     // 'poster_postingan',
+        //     'jenis_kegiatan' => 'required',
+        //     'tanggal' => 'required',
+        //     'lokasi' => 'required',
+        //     'caption' => 'required | max:255',
+        //     'ig_pelaksana' => 'required',
+        //     'email_pelaksana' => 'required',
+        //     'link_pendaftaran' => 'required',
+        //     'benefit' => 'required'
+        // ]);
 
-        $postingan = $request->file('poster_postingan');
-        $postingan_store = 'images/kegiatan';
-        $postingan->move($postingan_store, $postingan->getClientOriginalName());
+        // $postingan = $request->file('poster_postingan');
+        // $postingan_store = 'images/kegiatan';
+        // $postingan->move($postingan_store, $postingan->getClientOriginalName());
 
         $kegiatan = Kegiatan::find($id);
         $kegiatan->nama_kegiatan = $request->nama_kegiatan;
-        $kegiatan->poster_postingan = $request->postingan->getClientOriginalName();
+        // $kegiatan->poster_postingan = $request->postingan->getClientOriginalName();
         $kegiatan->jenis_kegiatan = $request->jenis_kegiatan;
         $kegiatan->tanggal = $request->tanggal;
         $kegiatan->lokasi = $request->lokasi;
@@ -183,7 +162,7 @@ class PostinganController extends Controller
         // $poster = Kegiatan::where('id', $id)->first();
         // Kegiatan::delete('images/kegiatan/' . $poster->poster_postingan);
 
-        return redirect('/admin/homepage');
+        return redirect('/admin');
     }
 
     public function detail($id)
