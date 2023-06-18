@@ -28,4 +28,9 @@ class Kegiatan extends Model
         'link_pendaftaran',
         'benefit',
     ];
+
+    public function user()
+    {
+        return $this->belongsToMany('App\Models\User');
+    }
 }

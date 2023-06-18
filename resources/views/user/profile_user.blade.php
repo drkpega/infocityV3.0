@@ -85,10 +85,13 @@
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <img src="profil.png" alt="avatar" class="rounded-circle img-fluid"
+                        @php
+                            $user = Auth::user();
+                        @endphp
+                            <img src="/images/profile/{{$user->profile_image}}" alt="avatar" class="rounded-circle img-fluid"
                                 style="width: 150px; background-image: url('background.png');">
                             <h5 class="my-3"><b>{{ Auth::user()->nama_user }} </b></h5>
-                            <h5 class="my-3">{{ Auth::user()->no_telp }}</h5>
+                            <h5 class="my-3">+62 {{ Auth::user()->no_telp }}</h5>
                             <br>
                             <br>
                             <br>
@@ -158,7 +161,6 @@
                                     <th scope="col">No.</th>
                                     <th scope="col">Jenis</th>
                                     <th scope="col">Nama</th>
-                                    <th scope="col">Tag</th>
                                     <th scope="col">Deadline</th>
                                 </tr>
                             </thead>
@@ -167,65 +169,31 @@
                                     <th scope="row">1</th>
                                     <td>Lomba</td>
                                     <td>Lomba Design Poster Digital</td>
-                                    <td>
-                                        <div class="badge bg-dark-subtle text-wrap" style="width: 6rem; color: black;">
-                                            Design
-                                        </div>
-                                        <div class="badge bg-dark-subtle text-wrap" style="width: 6rem; color: black;">
-                                            Poster
-                                        </div>
-                                        <div class="badge bg-dark-subtle text-wrap" style="width: 6rem; color: black;">
-                                            Himtif
-                                        </div>
-                                    </td>
                                     <td>Senin, 4 Mei 2022</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">2</th>
                                     <td>Lomba</td>
                                     <td>Lomba Design Poster Digital</td>
-                                    <td>
-                                        <div class="badge bg-dark-subtle text-wrap" style="width: 6rem; color: black;">
-                                            Design
-                                        </div>
-                                        <div class="badge bg-dark-subtle text-wrap" style="width: 6rem; color: black;">
-                                            Poster
-                                        </div>
-                                        <div class="badge bg-dark-subtle text-wrap" style="width: 6rem; color: black;">
-                                            Himtif
-                                        </div>
-                                    </td>
                                     <td>Senin, 4 Mei 2022</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">3</th>
                                     <td>Beasiswa</td>
                                     <td>Beasiswa Pemuda</td>
-                                    <td>
-                                        <div class="badge bg-dark-subtle text-wrap" style="width: 6rem; color: black;">
-                                            Design
-                                        </div>
-                                        <div class="badge bg-dark-subtle text-wrap" style="width: 6rem; color: black;">
-                                            Poster
-                                        </div>
-                                        <div class="badge bg-dark-subtle text-wrap" style="width: 6rem; color: black;">
-                                            Himtif
-                                        </div>
-                                    </td>
+                                    <td>Senin, 4 Mei 2022</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">4</th>
                                     <td>Beasiswa</td>
                                     <td>Beasiswa Bank Indonesia</td>
-                                    <td>
-                                    </td>
+                                    <td>Senin, 4 Mei 2022</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">5</th>
                                     <td>Beasiswa</td>
                                     <td>Beasiswa Alumni</td>
-                                    <td>
-                                    </td>
+                                    <td>Senin, 4 Mei 2022</td>
                                 </tr>
                             </tbody>
                         </table>

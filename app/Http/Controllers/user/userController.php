@@ -31,13 +31,13 @@ class userController extends Controller
         $event = kegiatan::where('jenis_kegiatan', '2')->get();
         $lomba = kegiatan::where('jenis_kegiatan', '3')->get();
         $volunteer = kegiatan::where('jenis_kegiatan', '3')->get();
-    // mengirim data pegawai ke view pegawai
-    return view('user.homepage_user', [
-        'beasiswa' => $beasiswa,
-        'event' => $event,
-        'lomba' => $lomba,
-        'volunteer' => $volunteer
-    ]);
+        // mengirim data pegawai ke view pegawai
+        return view('user.homepage_user', [
+            'beasiswa' => $beasiswa,
+            'event' => $event,
+            'lomba' => $lomba,
+            'volunteer' => $volunteer
+        ]);
     }
 
     // Lomba
@@ -99,6 +99,7 @@ class userController extends Controller
     {
         return view('user.profile_user');
     }
+
     public function profile_update($id, Request $request)
     {
         $request->validate([
@@ -106,16 +107,21 @@ class userController extends Controller
             'username' => 'required',
             'email' => 'required',
             'no_telp' => 'required',
+            'profile' => 'required'
         ]);
+
+        $profile_pict = $request->file('profile');
+        $image_upload = 'images/profile';
+        $profile_pict->move($image_upload, $profile_pict->getClientOriginalName());
 
         $user = User::find($id);
         $user->nama_user = $request->nama_user;
         $user->username = $request->username;
         $user->email = $request->email;
         $user->no_telp = $request->no_telp;
+        $user->profile_image = $request->profile_pict;
         $user->save();
-
-        return back()->with('message', 'Your password has been changed!');
+        return redirect()->back();
     }
 
 }

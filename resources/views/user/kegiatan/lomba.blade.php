@@ -10,7 +10,7 @@
             <div class="etalase-postingan">
               @foreach($kegiatan as $k)
                 <div class="kartu">
-                    <a href="/postingan/edit/{{ $k->id }}"><img src="/images/kegiatan/{{$k -> id}}" alt="/poster1"></a>
+                    <a href="/postingan/detail/{{ $k->id }}"><img src="/images/kegiatan/{{$k -> id}}" alt="/poster1"></a>
                    
 
                     <h5>{{ $k->nama_kegiatan }}</h5>

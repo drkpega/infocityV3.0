@@ -12,10 +12,14 @@ return new class extends Migration {
     {
         Schema::create('favorites', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_user');
-            $table->timestamps();
-
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
+            $table->unsignedBigInteger('kegiatan_id');
+            $table->foreign('kegiatan_id')
+                ->references('id')
+                ->on('kegiatan');
         });
     }
 

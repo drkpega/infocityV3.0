@@ -25,5 +25,15 @@ class DataUser extends Seeder
                 'password' => bcrypt('admin123'),
             ]
         );
+        DB::table('users')->insert(
+            [
+                'nama_user' => 'User Infocity',
+                'kode_user' => 0,
+                'email' => 'user@gmail.com',
+                'username' => 'userinfocity',
+                'no_telp' => '081234567891',
+                'password' => bcrypt('user123'),
+            ]
+        );
     }
 }

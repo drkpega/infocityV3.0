@@ -24,9 +24,18 @@ class adminController extends Controller
     {
         //get posts
         // $kegiatan = kegiatan::where('jenis_kegiatan', 'Lomba')->get();
-        $kegiatan = Kegiatan::all();
+        // $kegiatan = kegiatan::all();
+        $beasiswa = kegiatan::where('jenis_kegiatan', '1')->get();
+        $event = kegiatan::where('jenis_kegiatan', '2')->get();
+        $lomba = kegiatan::where('jenis_kegiatan', '3')->get();
+        $volunteer = kegiatan::where('jenis_kegiatan', '3')->get();
         // mengirim data pegawai ke view pegawai
-        return view('welcome', ['kegiatan' => $kegiatan]);
+        return view('admin.homepage_admin', [
+            'beasiswa' => $beasiswa,
+            'event' => $event,
+            'lomba' => $lomba,
+            'volunteer' => $volunteer
+        ]);
     }
 
     // Lomba
