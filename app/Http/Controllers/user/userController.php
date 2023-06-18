@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\Favorite;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Kegiatan;
@@ -63,7 +64,7 @@ class userController extends Controller
     // volunteer
     public function kegaitan_volunteer()
     {
-        //get posts volunteer (4)
+
         $kegiatan = kegiatan::where('jenis_kegiatan', '4')->get();
         return view('admin.kegiatan.volunteer', ['kegiatan' => $kegiatan]);
     }
@@ -77,15 +78,11 @@ class userController extends Controller
 
     public function search(Request $request)
     {
-        // menangkap data pencarian
         $search = $request->search;
 
-
-        // mengambil data dari table pegawai sesuai pencarian data
         $kegiatan = DB::table('kegiatan')
             ->where('nama_kegiatan', 'like',"%". $search . "%")->get();
 
-        // mengirim data pegawai ke view index
         return view('cari', ['kegiatan' => $kegiatan]);
 
     }
@@ -94,8 +91,10 @@ class userController extends Controller
     public function profile($id)
     {
         $user = User::where('id', $id);
+        $data = Favorite::where('Favorites.user_id', $id)->join('kegiatans', 'kegiatans.id', '=', 'favorites.kegiatan_id')
+        ->get();
 
-        return view('user.profile_user', ['user' => $user]);
+        return view('user.profile_user', ['user' => $data]);
     }
 
     public function profile_update($id, Request $request)

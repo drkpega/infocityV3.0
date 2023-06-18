@@ -28,7 +28,6 @@ class HomeController extends Controller
         $event = kegiatan::where('jenis_kegiatan', '3')->get();
         $lomba = kegiatan::where('jenis_kegiatan', '2')->get();
         $volunteer = kegiatan::where('jenis_kegiatan', '4')->get();
-    // mengirim data pegawai ke view pegawai
      return view('welcome', [
         'beasiswa' => $beasiswa,
         'event' => $event,

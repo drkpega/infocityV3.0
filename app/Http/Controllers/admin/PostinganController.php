@@ -22,13 +22,10 @@ class PostinganController extends Controller
     public function index()
     {
         //get posts
-        // $kegiatan = kegiatan::where('jenis_kegiatan', 'Lomba')->get();
-        // $kegiatan = kegiatan::all();
         $beasiswa = kegiatan::where('jenis_kegiatan', '1')->get();
         $event = kegiatan::where('jenis_kegiatan', '3')->get();
         $lomba = kegiatan::where('jenis_kegiatan', '2')->get();
         $volunteer = kegiatan::where('jenis_kegiatan', '4')->get();
-        // mengirim data pegawai ke view pegawai
         return view('admin.homepage_admin', [
             'beasiswa' => $beasiswa,
             'event' => $event,

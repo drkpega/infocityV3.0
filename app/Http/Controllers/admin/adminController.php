@@ -22,12 +22,10 @@ class adminController extends Controller
     }
     public function index()
     {
-        //$beasiswa = kegiatan::where('jenis_kegiatan', '1')->get();
         $beasiswa = kegiatan::where('jenis_kegiatan', '1')->get();
         $event = kegiatan::where('jenis_kegiatan', '3')->get();
         $lomba = kegiatan::where('jenis_kegiatan', '2')->get();
         $volunteer = kegiatan::where('jenis_kegiatan', '4')->get();
-    // mengirim data pegawai ke view pegawai
      return view('admin.homepage_admin', [
         'beasiswa' => $beasiswa,
         'event' => $event,
@@ -64,22 +62,16 @@ class adminController extends Controller
     // volunteer
     public function kegaitan_volunteer()
     {
-        //get posts volunteer (4)
         $kegiatan = kegiatan::where('jenis_kegiatan', '4')->get();
         return view('admin.kegiatan.volunteer', ['kegiatan' => $kegiatan]);
     }
 
     public function search(Request $request)
     {
-        // menangkap data pencarian
         $search = $request->search;
-
-
-        // mengambil data dari table pegawai sesuai pencarian data
         $kegiatan = DB::table('kegiatans')
             ->where('nama_kegiatan', 'like',"%". $search . "%")->get();
 
-        // mengirim data pegawai ke view index
         return view('cari', ['kegiatan' => $kegiatan]);
 
     }
