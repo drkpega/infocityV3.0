@@ -126,7 +126,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg">
+            <div class="col-lg" style="padding-left: 0px">
                 <div class="card mb-4">
                     <div class="card-body text-center">
                         <nav class="navbar navbar-expand-lg">
@@ -181,19 +181,38 @@
                                     <th scope="row">3</th>
                                     <td>Beasiswa</td>
                                     <td>Beasiswa Pemuda</td>
-                                    <td>Senin, 4 Mei 2022</td>
+
+                                    <td>
+                                        <div class="badge bg-dark-subtle text-wrap" style="width: 6rem; color: black;">
+                                            Design
+                                        </div>
+                                        <div class="badge bg-dark-subtle text-wrap" style="width: 6rem; color: black;">
+                                            Poster
+                                        </div>
+                                        <div class="badge bg-dark-subtle text-wrap" style="width: 6rem; color: black;">
+                                            Himtif
+                                        </div>
+                                    </td>
+                                    <td></td>
+
                                 </tr>
                                 <tr>
                                     <th scope="row">4</th>
                                     <td>Beasiswa</td>
                                     <td>Beasiswa Bank Indonesia</td>
-                                    <td>Senin, 4 Mei 2022</td>
+                                    <td>
+                                    </td>
+                                    <td></td>
+
                                 </tr>
                                 <tr>
                                     <th scope="row">5</th>
                                     <td>Beasiswa</td>
                                     <td>Beasiswa Alumni</td>
-                                    <td>Senin, 4 Mei 2022</td>
+                                    <td>
+                                    </td>
+                                    <td></td>
+
                                 </tr>
                             </tbody>
                         </table>
