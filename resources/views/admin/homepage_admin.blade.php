@@ -8,11 +8,9 @@
     </div>
     <div class="all-kegiatan">
         <div class="kegiatan">
-
             <a href="/admin/lomba">
                 <h4>Lomba</h4>
             </a>
-
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -37,15 +35,11 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-
         </div>
-
         <div class="kegiatan">
-
             <a href="/admin/beasiswa">
                 <h4>Beasiswa</h4>
             </a>
-
             <div id="carouselExampleControls2" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -72,13 +66,10 @@
                 </button>
             </div>
         </div>
-
         <div class="kegiatan">
-
             <a href="/admin/volunteer">
                 <h4>Volunteer</h4>
             </a>
-
             <div id="carouselExampleControls3" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -105,18 +96,16 @@
                 </button>
             </div>
         </div>
-
         <div class="kegiatan">
-
             <a href="/admin/event">
                 <h4>Event</h4>
             </a>
-
             <div id="carouselExampleControls4" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <a href="/admin/event"><img src="/images/activeevent.png" class="d-block w-100"
                                 alt="/event"></a>
+
                     </div>
                     @foreach ($event as $e)
                         <div class="carousel-item">

@@ -16,9 +16,5 @@ class Favorite extends Model
     protected $fillable = [
     ];
 
-    protected $table = "favorite";
-    public function user()
-    {
-        return $this->belongsTo('App\Models\User', 'id_user');
-    }
+    protected $table = "favorites";
 }

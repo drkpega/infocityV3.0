@@ -10,11 +10,12 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('kegiatan', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('kegiatans', function (Blueprint $table) {
+            $table->id();
             $table->string('nama_kegiatan');
             $table->string('poster_postingan');
-            $table->string('jenis_kegiatan');
+            $table->Integer('jenis_kegiatan');
+            // 1= Beasiswa, 2=Lomba, 3=Event, 4=Volunteer
             $table->string('tanggal');
             $table->text('lokasi');
             $table->string('caption');
@@ -31,6 +32,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('kegiatan');
+        Schema::dropIfExists('kegiatans');
     }
 };

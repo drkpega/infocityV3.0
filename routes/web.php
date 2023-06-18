@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\admin\adminController;
+use App\Http\Controllers\admin\PostinganController;
+use App\Http\Controllers\user\favoriteController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\user\userController;
@@ -37,9 +39,7 @@ Route::controller(userController::class)->group(function () {
     Route::get('/user', 'index');
     // profile
     Route::get('/user/profile/{id}', 'profile');
-    Route::post('/user/profile/update', 'profile_update');
-    // favorite
-    Route::get('/user/favorite/{}', 'profile');
+    Route::put('/user/profile/update/{id}', 'profile_update');
     // detail view postingan
     Route::get('/user/postingan/detail/{id}', 'detail');
     // controller postingan kategori
@@ -48,7 +48,12 @@ Route::controller(userController::class)->group(function () {
     Route::get('/user/beasiswa', 'kegiatan_beasiswa');
     Route::get('/user/volunteer', 'kegiatan_volunteer');
 });
-
+Route::controller(favoriteController::class)->group(function () {
+    // favorite
+    Route::get('/user/favorite/{id}', 'index');
+    Route::get('/user/favorite/{id}/add', 'favorite');
+    Route::post('/user/favorite/{id}/remove', 'unfavorite');
+});
 /*------------------------------------------
 --------------------------------------------
 All Admin Routes List
@@ -58,6 +63,16 @@ Route::controller(adminController::class)->group(function () {
     // view
     Route::get('/admin', 'index');
     // make postingan
+
+
+    // controller postingan kategori
+    Route::get('/admin/lomba', 'kegiatan_lomba');
+    Route::get('/admin/event', 'kegiatan_event');
+    Route::get('/admin/beasiswa', 'kegiatan_beasiswa');
+    Route::get('/admin/volunteer', 'kegiatan_volunteer');
+});
+
+Route::controller(PostinganController::class)->group(function () {
     Route::get('/postingan/tambah', 'tambah');
     Route::post('/postingan/store', 'store');
     // detail view postingan
@@ -65,18 +80,12 @@ Route::controller(adminController::class)->group(function () {
     // search
     Route::get('/postingan/search', 'search');
     // edit postingan
-    // Route::get('/postingan/edit/{id}', 'edit');
-    // Route::post('/postingan/update/{id}', 'update');
+    Route::get('/postingan/edit/{id}', 'edit');
+    Route::put('/postingan/update/{id}', 'update');
     // delete postingan
     Route::get('/postingan/hapus/{id}', 'delete');
     Route::get('/postingan/{id}', 'delete');
 
-    // controller postingan kategori
-    Route::get('/admin/lomba', 'kegiatan_lomba');
-    Route::get('/admin/event', 'kegiatan_event');
-    Route::get('/admin/beasiswa', 'kegiatan_beasiswa');
-    Route::get('/admin/volunteer', 'kegiatan_volunteer');
-    Route::get('/admin/homepage', 'index');
 });
 
 
@@ -101,9 +110,4 @@ Route::controller(ResetPasswordController::class)->group(function () {
     // reset password
     Route::get('/password/reset/{id}', 'ResetPassword')->name('reset.password.get');
     Route::post('/password/reset', 'submitResetPassword')->name('reset.password.post');
-});
-
-
-Route::get('favorite', function () {
-    return view('user.favorite');
 });

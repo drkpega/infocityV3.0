@@ -24,11 +24,11 @@ class PostinganController extends Controller
         //get posts
         // $kegiatan = kegiatan::where('jenis_kegiatan', 'Lomba')->get();
         // $kegiatan = kegiatan::all();
-            $beasiswa = kegiatan::where('jenis_kegiatan', '1')->get();
-            $beasiswa = kegiatan::where('jenis_kegiatan', '1')->get();
-            $event = kegiatan::where('jenis_kegiatan', '2')->get();
-            $lomba = kegiatan::where('jenis_kegiatan', '3')->get();
-            $volunteer = kegiatan::where('jenis_kegiatan', '3')->get();
+        $beasiswa = kegiatan::where('jenis_kegiatan', '1')->get();
+        $beasiswa = kegiatan::where('jenis_kegiatan', '1')->get();
+        $event = kegiatan::where('jenis_kegiatan', '2')->get();
+        $lomba = kegiatan::where('jenis_kegiatan', '3')->get();
+        $volunteer = kegiatan::where('jenis_kegiatan', '3')->get();
         // mengirim data pegawai ke view pegawai
         return view('admin.homepage_admin', [
             'beasiswa' => $beasiswa,
@@ -44,10 +44,10 @@ class PostinganController extends Controller
         //get posts
         // $kegiatan = kegiatan::where('jenis_kegiatan', 'Lomba')->get();
         // $kegiatan = kegiatan::all();
-            $beasiswa = kegiatan::where('jenis_kegiatan', '1')->get();
-            $event = kegiatan::where('jenis_kegiatan', '2')->get();
-            $lomba = kegiatan::where('jenis_kegiatan', '3')->get();
-            $volunteer = kegiatan::where('jenis_kegiatan', '3')->get();
+        $beasiswa = kegiatan::where('jenis_kegiatan', '1')->get();
+        $event = kegiatan::where('jenis_kegiatan', '2')->get();
+        $lomba = kegiatan::where('jenis_kegiatan', '3')->get();
+        $volunteer = kegiatan::where('jenis_kegiatan', '3')->get();
         // mengirim data pegawai ke view pegawai
         return view('user.homepage_user', [
             'beasiswa' => $beasiswa,
@@ -131,7 +131,48 @@ class PostinganController extends Controller
             'benefit' => $request->benefit
         ]);
 
-        return redirect('/admin/homepage');
+        return redirect('/admin');
+    }
+
+
+    public function edit($id)
+    {
+        $kegiatan = Kegiatan::find($id);
+        return view('admin.edit_kegiatan', ['kegiatan' => $kegiatan]);
+    }
+    public function update($id, Request $request)
+    {
+        $request->validate([
+            'nama_kegiatan' => 'required',
+            'poster_postingan' => 'required',
+            'jenis_kegiatan' => 'required',
+            'tanggal' => 'required',
+            'lokasi' => 'required',
+            'caption' => 'required | max:255',
+            'ig_pelaksana' => 'required',
+            'email_pelaksana' => 'required',
+            'link_pendaftaran' => 'required',
+            'benefit' => 'required'
+        ]);
+
+        $postingan = $request->file('poster_postingan');
+        $postingan_store = 'images/kegiatan';
+        $postingan->move($postingan_store, $postingan->getClientOriginalName());
+
+        $kegiatan = Kegiatan::find($id);
+        $kegiatan->nama_kegiatan = $request->nama_kegiatan;
+        $kegiatan->poster_postingan = $request->postingan->getClientOriginalName();
+        $kegiatan->jenis_kegiatan = $request->jenis_kegiatan;
+        $kegiatan->tanggal = $request->tanggal;
+        $kegiatan->lokasi = $request->lokasi;
+        $kegiatan->caption = $request->caption;
+        $kegiatan->ig_pelaksana = $request->ig_pelaksana;
+        $kegiatan->email_pelaksana = $request->email_pelaksana;
+        $kegiatan->link_pendaftaran = $request->link_pendaftaran;
+        $kegiatan->benefit = $request->benefit;
+        $kegiatan->save();
+
+        return redirect('/admin');
     }
 
     public function delete($id)

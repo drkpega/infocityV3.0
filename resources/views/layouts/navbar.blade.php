@@ -63,7 +63,7 @@
                         @else
                             <a href="/admin/profile/{{ Auth::user()->id }}"><i class="fa-regular fa-user mx-1"></i></a>
                         @endif
-                        <a href=""><i class="fa-regular fa-bookmark mx-1"></i></a>
+                        <a href="/user/favorite/{{ Auth::user()->id }}"><i class="fa-regular fa-bookmark mx-1"></i></a>
                     </li>
                 @endguest
             </ul>

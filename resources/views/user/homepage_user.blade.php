@@ -86,6 +86,7 @@
                         <div class="carousel-item">
                             <a href="/postingan/detail/{{ $v->id }}"><img src="/images/kegiatan/{{ $v->poster_postingan }}" class="d-block w-100"
                                 alt="/{{ $v->poster_postingan }}"></a>
+
                         </div>
                     @endforeach
                 </div>
@@ -116,7 +117,9 @@
                     @foreach ($event as $e)
                         <div class="carousel-item">
                             <a href="/postingan/detail/{{ $e->id }}"><img src="/images/kegiatan/{{ $e->poster_postingan }}" class="d-block w-100"
+
                                 alt="/{{ $e->poster_postingan }}"></a>
+
                         </div>
                     @endforeach
                 </div>
