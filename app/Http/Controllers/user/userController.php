@@ -43,7 +43,7 @@ class userController extends Controller
     {
         //get posts
         $kegiatan = kegiatan::where('jenis_kegiatan', '2')->get();
-        return view('admin.kegiatan.lomba', ['kegiatan' => $kegiatan]);
+        return view('user.kegiatan.lomba', ['kegiatan' => $kegiatan]);
     }
 
     // event
@@ -51,7 +51,7 @@ class userController extends Controller
     {
         //get posts
         $kegiatan = kegiatan::where('jenis_kegiatan', '3')->get();
-        return view('admin.kegiatan.event', ['kegiatan' => $kegiatan]);
+        return view('user.kegiatan.event', ['kegiatan' => $kegiatan]);
     }
 
     // beasiswa
@@ -59,7 +59,7 @@ class userController extends Controller
     {
         //get posts
         $kegiatan = kegiatan::where('jenis_kegiatan', '1')->get();
-        return view('admin.kegiatan.beasiswa', ['kegiatan' => $kegiatan]);
+        return view('user.kegiatan.beasiswa', ['kegiatan' => $kegiatan]);
     }
 
     // volunteer
@@ -67,7 +67,7 @@ class userController extends Controller
     {
 
         $kegiatan = kegiatan::where('jenis_kegiatan', '4')->get();
-        return view('admin.kegiatan.volunteer', ['kegiatan' => $kegiatan]);
+        return view('user.kegiatan.volunteer', ['kegiatan' => $kegiatan]);
     }
 
     public function detail($id)
@@ -115,7 +115,7 @@ class userController extends Controller
     public function password_reset($id, Request $request)
     {
         $request->validate([
-            'password' => 'required|confirmed',
+            'password' => 'required',
         ]);
 
         $user = User::find($id);

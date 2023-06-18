@@ -10,7 +10,7 @@
                 <div class="col-lg-8">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <form action="/password/reset/{{ Auth::user()->id }}" method="POST">
+                            <form action="/user/password/reset/{{ Auth::user()->id }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('PUT') }}
                                 <h4>
