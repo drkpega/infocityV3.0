@@ -15,50 +15,12 @@
 </div>
 
 <div class="etalase-postingan">
-    @foreach($user->kegiatan as $k)
+    @foreach($users->kegiatan as $k)
     <div class="card">
-        <img src="" alt="/poster1">
+        <img src="/images/kegiatan/{{$k->poster_postingan}}" alt="/poster1">
         <h5>{{$k->nama_kegiatan}}</h5>
         <button x-show="open" type="button" class="btn btn-danger">X Hapus</button>
     </div>
     @endforeach
-
-    <div class="card">
-        <img src="" alt="/poster2">
-        <h5>NamaKegiatan</h5>
-        <button type="button" class="btn btn-danger">X Hapus</button>
-    </div>
-    <div class="card">
-        <img src="" alt="/poster3">
-        <h5>NamaKegiatan</h5>
-        <button type="button" class="btn btn-danger">X Hapus</button>
-    </div>
-    <div class="card">
-        <img src="" alt="/poster4">
-        <h5>NamaKegiatan</h5>
-        <button type="button" class="btn btn-danger">X Hapus</button>
-    </div>
-    <div class="card">
-        <img src="" alt="/poster5">
-        <h5>NamaKegiatan</h5>
-        <button type="button" class="btn btn-danger">X Hapus</button>
-    </div>
-    <div class="card">
-        <img src="" alt="/poster6">
-        <h5>NamaKegiatan</h5>
-        <button type="button" class="btn btn-danger">X Hapus</button>
-    </div>
-    <div class="card">
-        <img src="" alt="/poster7">
-        <h5>NamaKegiatan</h5>
-        <button type="button" class="btn btn-danger">X Hapus</button>
-    </div>
-    <div class="card">
-        <img src="" alt="/poster8">
-        <h5>NamaKegiatan</h5>
-        <button type="button" class="btn btn-danger">X Hapus</button>
-    </div>
-</div>
-
 </div>
 @endsection

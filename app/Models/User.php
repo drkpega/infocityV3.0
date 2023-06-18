@@ -56,6 +56,6 @@ class User extends Authenticatable
 
     public function kegiatan()
     {
-        return $this->belongsToMany('App\Models\Kegiatan');
+        return $this->belongsToMany(Kegiatan::class, 'favorites', 'kegiatan_id', 'user_id');
     }
 }

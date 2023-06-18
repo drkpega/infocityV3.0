@@ -17,8 +17,4 @@ class Favorite extends Model
     ];
 
     protected $table = "favorite";
-    public function user()
-    {
-        return $this->belongsTo('App\Models\User', 'id_user');
-    }
 }

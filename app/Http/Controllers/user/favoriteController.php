@@ -3,19 +3,18 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
-use app\models\User;
 use app\models\Kegiatan;
 use Illuminate\Support\Facades\Auth;
 
 class favoriteController extends Controller
 {
     //
-    public function index()
+    public function index($id)
     {
-        $user = Auth::user()->id;
-        $users = User::where('id', $user)->get();
+        $user = User::find($id);
 
-        return view('user/favorite', ['user' => $users]);
+        return view('user/favorite', ['users' => $user]);
     }
 }

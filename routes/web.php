@@ -50,9 +50,9 @@ Route::controller(userController::class)->group(function () {
 });
 Route::controller(favoriteController::class)->group(function () {
     // favorite
-    Route::get('/user/favorite', 'index');
-    Route::get('/user/favorite/{id}', 'favorite');
-    Route::post('/user/unfavorite/{id}', 'unfavorite');
+    Route::get('/user/favorite/{id}', 'index');
+    Route::get('/user/favorite/{id}/add', 'favorite');
+    Route::post('/user/favorite/{id}/remove', 'unfavorite');
 });
 /*------------------------------------------
 --------------------------------------------
@@ -109,9 +109,4 @@ Route::controller(ResetPasswordController::class)->group(function () {
     // reset password
     Route::get('/password/reset/{id}', 'ResetPassword')->name('reset.password.get');
     Route::post('/password/reset', 'submitResetPassword')->name('reset.password.post');
-});
-
-
-Route::get('favorite', function () {
-    return view('user.favorite');
 });

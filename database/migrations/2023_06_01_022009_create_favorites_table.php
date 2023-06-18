@@ -12,14 +12,14 @@ return new class extends Migration {
     {
         Schema::create('favorites', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->unsigned();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
-            $table->unsignedBigInteger('kegiatan_id');
+            $table->unsignedBigInteger('kegiatan_id')->unsigned();
             $table->foreign('kegiatan_id')
                 ->references('id')
-                ->on('kegiatan');
+                ->on('kegiatans');
         });
     }
 
